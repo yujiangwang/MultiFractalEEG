@@ -1,3 +1,9 @@
 [submodule "libs/wfdb-app-toolbox"]
 	path = libs/wfdb-app-toolbox
 	url = https://github.com/ikarosilva/wfdb-app-toolbox
+[submodule "libs/chhabra-jensen"]
+	path = libs/chhabra-jensen
+	url = https://github.com/lucasfr/chhabra-jensen
+[submodule "libs/plotScMatrix"]
+	path = libs/plotScMatrix
+	url = https://github.com/lucasfr/plotScMatrix
