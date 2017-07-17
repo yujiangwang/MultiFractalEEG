@@ -4,20 +4,27 @@ close all
 id = 'I001_P005_D01';
 
 szPoint = 25220; szPointF = 25290.5; nullPoint = szPoint - 1800;
-nullPointF = szPointF - 1800;
+nullPointF = szPointF - 1800; sampRate = 5000;
 
-session = IEEGSession(id,'lucasfr','luc_ieeglogin.bin');
-sampRate = session.data.sampleRate;
 
-segStart = nullPoint * sampRate;
-segStop = nullPointF * sampRate;
-values = session.data.getvalues(segStart:segStop,...
-    1:length(session.data.channelLabels(:,1)));
+%% iEEG.ORG SESSION (PLEASE REPLACE xxx WITH YOUR DETAILS)
 
-segStart = szPoint * sampRate;
-segStop = szPointF * sampRate;
-valuesSz = session.data.getvalues(segStart:segStop,...
-    1:length(session.data.channelLabels(:,1)));
+% session = IEEGSession(id,xxx,xxx);
+% sampRate = session.data.sampleRate;
+% 
+% segStart = nullPoint * sampRate;
+% segStop = nullPointF * sampRate;
+% values = session.data.getvalues(segStart:segStop,...
+%     1:length(session.data.channelLabels(:,1)));
+% 
+% segStart = szPoint * sampRate;
+% segStop = szPointF * sampRate;
+% valuesSz = session.data.getvalues(segStart:segStop,...
+%     1:length(session.data.channelLabels(:,1)));
+% 
+% save('figure_5b.mat','values','valuesSz')
+
+load('figure_5b.mat')
 
 
 for chNum = [1:3, 29:31]

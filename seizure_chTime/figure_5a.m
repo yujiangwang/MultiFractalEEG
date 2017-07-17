@@ -4,19 +4,24 @@ close all
 %% SETTING PARAMETERS
 
 qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01'; seg = '1';
-chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451;
+chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451; 
+sampRate = 5000;
 
 szStop = szStart + szPointF - szPoint;
 
 %% iEEG.ORG SESSION (PLEASE REPLACE xxx WITH YOUR DETAILS)
 
-session = IEEGSession(id,'lucasfr','luc_ieeglogin.bin');
+% session = IEEGSession(id,'xxx','xxx');
+% 
+% Channels = session.data.channelLabels;
+% sampRate = session.data.sampleRate;
+% nCh=length(Channels);
+% values = session.data.getvalues((szPoint-450)*sampRate:...
+%     (szPoint+450)*sampRate, chNum);
+% 
+% save('figure_5a.mat','values')
 
-Channels = session.data.channelLabels;
-sampRate = session.data.sampleRate;
-nCh=length(Channels);
-values = session.data.getvalues((szPoint-450)*sampRate:...
-    (szPoint+450)*sampRate, chNum);
+load('figure_5a.mat')
 
 %% FILTERING COMPONENTS OF FREQUENCIES BELLOW 1 Hz TO REMOVE DC SHIFTS
 
