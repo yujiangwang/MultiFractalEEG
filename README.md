@@ -23,5 +23,5 @@ savepath
 FIGURE 4 - .../mfractal_methods/  
 FIGURE 5 - .../seizures_chTime/  
 FIGURE 6 - .../relation_pBands/  
-FIGURE 7 - .../relation_measures/
+FIGURE 7 - .../relation_measures/  
 FIGURE 8 - .../sleep/  
