@@ -3,19 +3,26 @@ close all
 
 qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01';
 
-session = IEEGSession(id,'lucasfr','luc_ieeglogin.bin');
+%% iEEG.ORG SESSION (PLEASE REPLACE xxx WITH YOUR DETAILS)
 
-Channels = session.data.channelLabels;
+% session = IEEGSession(id,'lucasfr','luc_ieeglogin.bin');
+% 
+% Channels = session.data.channelLabels;
+% 
+% sampRate = session.data.sampleRate;
+% nCh=length(Channels);
+% 
+% szPoint = 25220;
+% szStart = 901;
+% szStop = szStart + 25290.5 - szPoint;
+% 
+% values = session.data.getvalues((szPoint-900)*sampRate:...
+%     (szPoint+900)*sampRate, 2);
+% 
+% 
+% save('figure_6.mat','values')
 
-sampRate = session.data.sampleRate;
-nCh=length(Channels);
-
-szPoint = 25220;
-szStart = 901;
-szStop = szStart + 25290.5 - szPoint;
-
-values = session.data.getvalues((szPoint-900)*sampRate:...
-    (szPoint+900)*sampRate, 2);
+load('figure_6.mat')
 
 [b,a] = butter(2, [0.5 500]/(sampRate/2), 'bandpass');
 values = filtfilt(b,a,values);
