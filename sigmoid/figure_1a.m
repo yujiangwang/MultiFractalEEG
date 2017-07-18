@@ -1,19 +1,22 @@
 clear
 close all
 
+%% PARAMETERS
+
 s = -5:0.1:5;
 sigma = [];
-
 C = linspecer(20);
 
+%% PLOTTING A FAMILY OF SIGMOID FUNCTIONS
+
 for k = 1:20
-
-v = 0.1*k;
-x = s;
-sigma(:,k) = 1./(1 + exp(-v*x));
-plot(s,sigma(:,k),'color',C(k,:),'LineWidth',4);
-hold on
-
+    
+    v = 0.1*k;
+    x = s;
+    sigma(:,k) = 1./(1 + exp(-v*x));
+    plot(s,sigma(:,k),'color',C(k,:),'LineWidth',4);
+    hold on
+    
 end
 
 hold off

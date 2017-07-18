@@ -1,23 +1,37 @@
 function [cz,oz] = sleepEval(ann,sData,segmentSize,sampRate,qi,qf,dq,Np,Ra,Io)
 
+%% PARAMETERS
+
+% FACTOR IS THE RATION BETWEEN THE EEG SAMPLING RATE AND THE MULTIFRACTAL
+% METRIC SAMPLNG RATE.
+
 factor = segmentSize/sampRate;
+
+%% CROPPING THE TIME SERIES TO A DYADIC SCALE COMPATIBLE LENGTH
 
 data = sData(1,:);
 siz = floor(length(sData)/segmentSize)*segmentSize;
 data = data(1,1:siz);
 
+%% MULTIFRACTAL AND DELTA ANALYSES FROM ONE OF THE CHANNELS
+
 [cz.deltaF,cz.width] = ...
     chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
 [cz.deltaPR] = deltaBand(data,sampRate,segmentSize);
+
+%% CROPPING THE TIME SERIES TO A DYADIC SCALE COMPATIBLE LENGTH
 
 data = sData(2,:);
 siz = floor(length(sData)/segmentSize)*segmentSize;
 data = data(1,1:siz);
 
+%% MULTIFRACTAL AND DELTA ANALYSES FROM ONE OF THE CHANNELS
+
 [oz.deltaF,oz.width] = ...
     chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
 [oz.deltaPR] = deltaBand(data,sampRate,segmentSize);
 
+%% PLOTTING THE FIGURES
 
 figure;
 subplot(3,1,1)

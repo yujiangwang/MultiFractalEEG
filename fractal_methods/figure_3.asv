@@ -29,7 +29,7 @@ for j = 1:length(stdFactor)
         
     end
     
-    %% TWEAKED FRACTIONAL BROWNIAN MOTION
+    %% TWEAKED FRACTIONAL BROWNIAN
             
     for i = 1:1800
         
@@ -49,8 +49,6 @@ for j = 1:length(stdFactor)
     
 end
 
-%% DFA AND DESCRIPTIVE STATISTICS
-
 parfor j = 1:length(stdFactor)
 
     [dfaFD(:,j)] = dfa_nr_meth(series(:,j)',segSize,8,2); % 2 - dyadic scale
@@ -59,13 +57,9 @@ parfor j = 1:length(stdFactor)
    
 end
 
-%% HIGUCHI METHOD
 
 [HigFD] = higuchi_nr_meth(series(:,4)',segSize,4);
 [HigFDn] = higuchi_nr_meth_n(series(:,4)',segSize,4);
-
-
-%% PLOTTING THE FIGURES
 
 h = figure;
 

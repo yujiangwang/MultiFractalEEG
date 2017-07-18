@@ -1,12 +1,17 @@
 clear
 close all
 
+%% LOADING TIME SERIES
+
 raw = load('series.txt');
 raw = raw(:,2);
+
+%% PARAMETERS
 
 a = 1:1024;
 b = a/512;
 
+%% PLOTTING THE TIME SERIES
 
 h = figure;
 
@@ -14,6 +19,8 @@ yyaxis right
 plot(b,raw,'k','LineWidth',4)
 ylim([min(raw) max(raw)])
 ylabel('U(\muV)')
+
+%% PLOTTING THE TRANSFORMED TIME SERIES FAMILY
 
 C = linspecer(20);
 yyaxis left

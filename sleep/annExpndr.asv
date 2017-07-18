@@ -1,7 +1,9 @@
 function [ann] = annExpndr(annot,onset,data,sampRate)
- 
-% THIS FUNCTION RECEIVES ANNOTATIONS AND CONVERTS THESE EVENTS INTO A
-% CONTINUOUS FUNCTION
+
+THIS FUNCTION RECEIVES ANNOTATIONS AND CONVERTS THESE EVENTS INTO A
+CON
+
+
 
 ann = zeros(length(data)/sampRate,1);
 

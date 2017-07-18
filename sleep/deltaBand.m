@@ -1,5 +1,8 @@
 function [deltaPR] = deltaBand(series,sampRate,wSize)
 
+% RETURNS THE DELTA BAND POWER
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FILTERS LOT
 
