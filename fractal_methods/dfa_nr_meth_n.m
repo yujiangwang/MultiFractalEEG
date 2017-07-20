@@ -25,7 +25,7 @@ for e = 1:chNumber
         
         electr = electrode(:,col);        
         
-        % CHHABRA-JENSEN METHOD CALL
+        % DFA METHOD CALL
         [ln,lf] = dfa(electr,1,false,minWin,maxWin,false);
         %% STORING THE OUTPUT OF THE MULTIFRACTAL ANALYSIS IN THE
         %% PROPER VARIABLES

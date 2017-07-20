@@ -18,7 +18,7 @@ for e = 1:chNumber
     electrode = reshape(electrode,segmentSize,[]);
     tam = size(electrode);
     
-    
+    disp(['Channel ' num2str(e)])
     
     %% LOOP OVER THE SEGMENTS OF THE CHANNEL RECORDING
     for col = 1:tam(2)
@@ -28,9 +28,9 @@ for e = 1:chNumber
         sigma = 1./(1 + exp(-x));
         
         
-        % CHHABRA-JENSEN METHOD CALL
+        % HIGUCHI METHOD CALL
         [HFD] = Higuchi_FD(sigma, Kmax);
-        col
+        disp([num2str(col/tam(2)*100) '%'])
         %% STORING THE OUTPUT OF THE MULTIFRACTAL ANALYSIS IN THE
         %% PROPER VARIABLES
        

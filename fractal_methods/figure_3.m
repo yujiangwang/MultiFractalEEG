@@ -1,5 +1,8 @@
+%% Results successfully reproduced by YW (20/July/2017)
+%% External function such as dfa() and Higuchi_FD() were not checked in detail
 clear
 close all
+clc
 
 %% PARAMETERS
 
@@ -51,17 +54,24 @@ end
 
 %% DFA AND DESCRIPTIVE STATISTICS
 
-parfor j = 1:length(stdFactor)
-
+%can use parfor
+for j = 1:length(stdFactor)
+    tic
     [dfaFD(:,j)] = dfa_nr_meth(series(:,j)',segSize,8,2); % 2 - dyadic scale
+    toc
+    tic
     [dfaFDn(:,j)] = dfa_nr_meth_n(series(:,j)',segSize,8,2);
+    toc
+    tic
     [mVal(:,j),stdVal(:,j),~] = mstdvar(series(:,j)',2,512);
+    toc
    
 end
 
 %% HIGUCHI METHOD
-
+tic
 [HigFD] = higuchi_nr_meth(series(:,4)',segSize,4);
+toc
 [HigFDn] = higuchi_nr_meth_n(series(:,4)',segSize,4);
 
 
@@ -96,7 +106,7 @@ figure
 subplot(2,1,1)
 plot(2:2:2*length(dfaFD(:,4)),dfaFD(:,4),'Color',[202 0 32]./255,...
     'LineWidth',1)
-title('Variation of scaling exponent (with Sigmoid)')
+title('Variation of scaling exponent (with standardisation and sigmoid)')
 xlim([2 3600])
 ylim([1.3 1.9])
 xlabel('Time (s)')
@@ -124,7 +134,7 @@ figure
 subplot(2,1,1)
 plot(2:2:2*length(fractalsMat(:,3)),fractalsMat(:,3),'Color',[202 0 32]./255,...
     'LineWidth',1)
-title('Variation of scaling exponent (with Sigmoid)')
+title('Variation of scaling exponent (with standardisation and sigmoid)')
 xlim([2 3600])
 ylim([1 1.8])
 xlabel('Time (s)')

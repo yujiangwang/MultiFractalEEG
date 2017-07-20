@@ -28,7 +28,7 @@ for e = 1:chNumber
         sigma = 1./(1 + exp(-x));
         
         
-        % CHHABRA-JENSEN METHOD CALL
+        % DFA METHOD CALL
         [ln,lf] = dfa(sigma,1,false,minWin,maxWin,false);
         %% STORING THE OUTPUT OF THE MULTIFRACTAL ANALYSIS IN THE
         %% PROPER VARIABLES
