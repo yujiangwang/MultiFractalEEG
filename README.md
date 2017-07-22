@@ -25,6 +25,11 @@ FIGURE 4 - .../mfractal_methods/
 Victor Venema - Victor.Venema@uni-bonn.de  
 http://www2.meteo.uni-bonn.de/staff/venema/themes/surrogates/pmodel/  
 
+Espen A. F. Ihlen - espen.ihlen@ntnu.no  
+http://journal.frontiersin.org/article/10.3389/fphys.2012.00141/full  
+
+Gao-Feng Gu and Wei-Xing Zhou - wxzhou@ecust.edu.cn  
+https://journals.aps.org/pre/abstract/10.1103/PhysRevE.82.011136  
 
 FIGURE 5 - .../seizures_chTime/  
 FIGURE 6 - .../relation_pBands/  
