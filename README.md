@@ -20,7 +20,12 @@ cd mcode
 addpath(pwd);  
 savepath  
 
-FIGURE 4 - .../mfractal_methods/  
+FIGURE 4 - .../mfractal_methods/
+
+Victor Venema - Victor.Venema@uni-bonn.de  
+http://www2.meteo.uni-bonn.de/staff/venema/themes/surrogates/pmodel/  
+
+
 FIGURE 5 - .../seizures_chTime/  
 FIGURE 6 - .../relation_pBands/  
 FIGURE 7 - .../relation_measures/  
