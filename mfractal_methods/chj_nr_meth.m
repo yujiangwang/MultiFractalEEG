@@ -1,5 +1,8 @@
 function [deltaF,width] = chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io)
 
+%this is the Chhabra Jensen method that include a standardisation & sigmoid
+%transform of the data.
+
 vec = size(data);
 numSegments = vec(2)/segmentSize;
 chNumber=vec(1);

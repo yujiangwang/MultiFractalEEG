@@ -1,5 +1,8 @@
 function [deltaF,width] = chj_nr_meth_n(data,segmentSize,qi,qf,dq,Np,Ra,Io)
 
+%this is the Chhabra Jensen method that applies directly to the data without any
+%prior transformations. Note that only non-negative numbers should be used.
+
 vec = size(data);
 numSegments = vec(2)/segmentSize;
 chNumber=vec(1);

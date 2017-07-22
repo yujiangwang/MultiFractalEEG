@@ -1,5 +1,6 @@
 % GFGU_MFDMA_1D.m
-%
+% from the publication:
+% https://journals.aps.org/pre/abstract/10.1103/PhysRevE.82.011136
 function [n,Fq,tau,alpha,f] = MFDMA_1D(x,n_min,n_max,N,theta,q)
 %
 % The procedure [n,Fq,tau,alpha,f]=GFGU_MFDMA_1D(x,n_min,n_max,N,theta,q) is

@@ -1,5 +1,8 @@
 function [deltaF,width] = mfdma_nr_meth_n(data,segmentSize,qi,qf,dq,Np,Ra,Io)
 
+%this is the MFDMA method that applies directly to the data without any
+%prior transformations
+
 vec = size(data);
 numSegments = vec(2)/segmentSize;
 chNumber=vec(1);

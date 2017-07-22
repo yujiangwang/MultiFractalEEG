@@ -1,5 +1,7 @@
 function [Hq,tq,hq,Dq,Fq] = MFDFA1(signal,scale,q,m,Fig)
 % Multifractal detrended fluctuation analysis (MFDFA)
+% function comes from this publication:
+% http://journal.frontiersin.org/article/10.3389/fphys.2012.00141/full
 %
 % [Hq,tq,hq,Dq,Fq]=MFDFA(signal,scale,q,m,Fig);
 %
