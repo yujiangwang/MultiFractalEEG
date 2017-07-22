@@ -1,3 +1,5 @@
+% checked by YW on 22nd July
+
 clear
 close all
 
@@ -38,19 +40,19 @@ load('figure_5a.mat')
 
 %% 5000Hz
 
-siz = floor(length(values)/16384)*16384;
+siz = floor(length(values)/16384)*16384;%2^14=16384, which is the largest number of points that will use used in the following for the estimation of the MF spectrum
 data = values(1:siz,1)';
 
 [w1.deltaF,w1.width] = ...
-    chj_nr_meth(data,1024,qi,qf,dq,Np,Ra,Io);
+    chj_nr_meth(data,1024,qi,qf,dq,Np,Ra,Io);%2^10
 [w2.deltaF,w2.width] = ...
-    chj_nr_meth(data,2048,qi,qf,dq,Np,Ra,Io);
+    chj_nr_meth(data,2048,qi,qf,dq,Np,Ra,Io);%2^11
 [w3.deltaF,w3.width] = ...
-    chj_nr_meth(data,4096,qi,qf,dq,Np,Ra,Io);
+    chj_nr_meth(data,4096,qi,qf,dq,Np,Ra,Io);%2^12
 [w4.deltaF,w4.width] = ...
-    chj_nr_meth(data,8192,qi,qf,dq,Np,Ra,Io);
+    chj_nr_meth(data,8192,qi,qf,dq,Np,Ra,Io);%2^13
 [w5.deltaF,w5.width] = ...
-    chj_nr_meth(data,16384,qi,qf,dq,Np,Ra,Io);
+    chj_nr_meth(data,16384,qi,qf,dq,Np,Ra,Io);%2^15
 
 
 %% 2500Hz
