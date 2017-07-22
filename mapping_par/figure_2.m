@@ -1,3 +1,6 @@
+% checked by YW on 22nd July
+% note the plotting is done separately by the R script.
+
 clear
 close all
 
@@ -6,11 +9,11 @@ close all
 load('JR_12062011_1630_1730_ch1.mat')
 
 rng('default');
-rng(666);
+rng(666);%because Lucas loves the devil??? ;)
 rand = randn(1,length(data));
 
 rng('default');
-rng(666);
+rng(666);%more like the devil is in the details...
 ix = randperm(length(data));
 surrEEG(1,:) = data(ix);
 

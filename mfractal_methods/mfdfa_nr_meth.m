@@ -1,5 +1,8 @@
 function [deltaF,width] = mfdfa_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io)
 
+%this is the MFDFA method that include a standardisation & sigmoid
+%transform of the data.
+
 vec = size(data);
 numSegments = vec(2)/segmentSize;
 chNumber=vec(1);
