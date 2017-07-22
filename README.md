@@ -3,6 +3,12 @@
 Figures of the artcle XXXXX
 
 FIGURE 1 - .../sigmoid/  
+  
+This figure was creared with a function to define the colours (included in this repository). The script was created by:  
+
+Jonathan C. Lansey - lansey@gmail.com
+https://uk.mathworks.com/matlabcentral/fileexchange/42673-beautiful-and-distinguishable-line-colors-+-colormap?focused=5372538&tab=function  
+
 FIGURE 2 - .../mapping_par/  
 FIGURE 3 - .../fractal_methods/  
 
