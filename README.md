@@ -38,6 +38,6 @@ Gao-Feng Gu and Wei-Xing Zhou - wxzhou@ecust.edu.cn
 https://journals.aps.org/pre/abstract/10.1103/PhysRevE.82.011136  
 
 FIGURE 5 - .../seizures_chTime/  
-FIGURE 6 - .../relation_pBands/  
-FIGURE 7 - .../relation_measures/  
+FIGURE 6 - .../relation_measures/  
+FIGURE 7 - .../relation_pBands/  
 FIGURE 8 - .../sleep/  
