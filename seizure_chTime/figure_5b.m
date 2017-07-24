@@ -1,3 +1,4 @@
+% checked by YW on 24th July 2017
 clear
 close all
 
@@ -28,7 +29,7 @@ nullPointF = szPointF - 1800; sampRate = 5000;
 
 load('figure_5b.mat')
 
-%% LOOP OVER THE INTEREST CHANNELS
+%% LOOP OVER THE CHANNELS OF INTEREST (SOZ channels)
 
 for chNum = [1:3, 29:31]
     

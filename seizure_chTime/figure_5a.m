@@ -1,4 +1,4 @@
-% checked by YW on 22nd July
+% checked by YW on 22nd July 2017
 
 clear
 close all
@@ -23,7 +23,7 @@ szStop = szStart + szPointF - szPoint;
 % 
 % save('figure_5a.mat','values')
 
-load('figure_5a.mat')
+load('figure_5a.mat')%to save downloading frm the iEEG portal, we provide the data we used as a mat file
 
 %% FILTERING COMPONENTS OF FREQUENCIES BELLOW 1 Hz TO REMOVE DC SHIFTS
 

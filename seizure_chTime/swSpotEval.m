@@ -1,10 +1,13 @@
 function swSpotEval(szRaw,nullRaw,filename,wSizes,szNum,...
     sampRate,sampRates,qi,qf,dq,Io,Np,Ra)
+% This function calculates for each input channel of each time series
+% segment with a seizure the effect size of the MF measure interictally vs
+% ictally. It saves the results in filename.
 
 for z = 1:length(wSizes)
     
 
-    for k = 1:length(szRaw)
+    for k = 1:length(szRaw) %loop through channels
         
         [b,a] = butter(2, 1/(sampRate/2), 'high');
         szRaw{k} = filtfilt(b,a,szRaw{k});
@@ -12,6 +15,7 @@ for z = 1:length(wSizes)
         
         for i = 1:length(sampRates)
             
+            %seizure segment
             values = downsample(szRaw{k},sampRate/sampRates(i));
             factor = wSizes(z)/(sampRate/(sampRate/sampRates(i)));
             
@@ -24,7 +28,7 @@ for z = 1:length(wSizes)
             
             szMean(i,k,z) = mean(width{i,k,z});
             
-            
+            %interictal segment
             values = downsample(nullRaw{k},sampRate/sampRates(i));
             factor = wSizes(z)/(sampRate/(sampRate/sampRates(i)));
             
