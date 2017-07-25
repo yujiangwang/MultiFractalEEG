@@ -4,6 +4,7 @@ close all
 %% EVALUATION PARAMETERS
 
 qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01';
+sampRate = 5000;
 
 %% iEEG.ORG SESSION (PLEASE REPLACE xxx WITH YOUR DETAILS)
 
