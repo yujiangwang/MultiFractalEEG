@@ -1,3 +1,4 @@
+%checked by YW 25th July 2017
 clear
 close all
 
@@ -16,6 +17,8 @@ sampRate = 512;
     chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
 
 %% MULTIFRACTAL SPECTRA (NORMALISED ON THE WHOLE DATA SERIES)
+%note that Chhabra Jensen only accepts positive values as input time
+%series, hence the sigmoid transform is neccessary in any case
 
 x = (data - mean(data))/std(data);
 sigma = 1./(1 + exp(-x));
