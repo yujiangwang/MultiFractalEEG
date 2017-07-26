@@ -1,3 +1,4 @@
+%checked by YW 26th July 2017
 clear
 close all
 
@@ -23,18 +24,20 @@ sampRate = 5000;
 %     (szPoint+900)*sampRate, 2);
 % 
 % 
-% save('figure_6.mat','values')
+% save('figure_7.mat','values')
 
 %% LOADING DATA (YOU CAN ALSO DOWNLOAD IT FROM iEEG.ORG - JUST UNCOMMENT)
 
-load('figure_6.mat')
+load('figure_7.mat')
 
 %% BANDPASS FILTER
+%to remove DC shifts below 0.5 Hz
+%not notch filter applied, as line noise was not too bad in this segment
 
 [b,a] = butter(2, [0.5 500]/(sampRate/2), 'bandpass');
 values = filtfilt(b,a,values);
 
-%% CROPPING THE DATA INTO A LENGTH COMPATIBLE TO TEH DYADIC SCALE
+%% CROPPING THE DATA INTO A LENGTH COMPATIBLE TO THE DYADIC SCALE
 
 siz = floor(length(values)/8192)*8192;
 data = values(1:siz);
@@ -45,7 +48,7 @@ data = data';
 [deltaF,width] = ...
     chj_nr_meth(data,8192,qi,qf,dq,Np,Ra,Io);
 
-%% BANDPASS FILTER
+%% BANDPASS FILTER TO REMOVE DC shifts
 
 [b,a] = butter(2, [0.5 500]/(sampRate/2), 'bandpass');
 values = filtfilt(b,a,values);
