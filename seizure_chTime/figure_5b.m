@@ -1,6 +1,7 @@
 % checked by YW on 24th July 2017
 clear
 close all
+addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
 
 %% DEFINING PARAMETERS
 

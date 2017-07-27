@@ -1,5 +1,7 @@
+%Checked by YW on 27th July
 clear
 close all
+addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
 
 %% DEFINING PARAMETERS
 segmentSize = 1024; qi = -15; qf = 15; dq = 1; Io = 2; Np = 8; Ra = 0.9;

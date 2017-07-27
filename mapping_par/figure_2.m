@@ -3,6 +3,7 @@
 
 clear
 close all
+addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
 
 %% LOADING DATA
 
