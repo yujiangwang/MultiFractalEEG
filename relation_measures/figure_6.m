@@ -1,6 +1,7 @@
 %checked by YW 25th July 2017
 clear
 close all
+addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
 
 %% OPENING THE DATA
 

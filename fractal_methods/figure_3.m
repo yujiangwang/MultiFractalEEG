@@ -3,6 +3,7 @@
 clear
 close all
 clc
+addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
 
 %% PARAMETERS
 

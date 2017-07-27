@@ -1,8 +1,11 @@
 function [cz,oz] = sleepEval(ann,sData,segmentSize,sampRate,qi,qf,dq,Np,Ra,Io)
+%this script calculates the Chhabra Jensen multifractal spectrum on the cz
+%and oz channels in the EEG recording and plot this with the hypnogram and
+%the delta bandpower 
 
 %% PARAMETERS
 
-% FACTOR IS THE RATION BETWEEN THE EEG SAMPLING RATE AND THE MULTIFRACTAL
+% FACTOR IS THE RATIO BETWEEN THE EEG SAMPLING RATE AND THE MULTIFRACTAL
 % METRIC SAMPLNG RATE.
 
 factor = segmentSize/sampRate;
