@@ -1,5 +1,7 @@
+%Checked by YW 27th July 2017
 clear
 close all
+addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
 
 %% LOADING TIME SERIES
 
@@ -20,7 +22,7 @@ plot(b,raw,'k','LineWidth',4)
 ylim([min(raw) max(raw)])
 ylabel('U(\muV)')
 
-%% PLOTTING THE TRANSFORMED TIME SERIES FAMILY
+%% PLOTTING THE TRANSFORMED (standardised and sigmoid transformed) TIME SERIES FAMILY
 
 C = linspecer(20);
 yyaxis left
