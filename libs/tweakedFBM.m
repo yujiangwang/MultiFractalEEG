@@ -11,8 +11,8 @@ for k = 1:n
 end
 
 r = [r; r(end-1:-1:2)]; % first rwo of circulant matrix
-lambda = real(fft(r))/(2*n); % eigenvalues
-W = fft(sqrt(lambda).*complex(factor*randn(2*n,1),factor*randn(2*n,1)));
+lambda = real(fft(r))/(2*n); % eigenvalues- taking real part to remove the negligible complex part
+W = fft(sqrt(lambda).*factor.*complex(randn(2*n,1),randn(2*n,1)));%multiply by some complex random numbers, where factor is the modulation
 W = n^(-H)*cumsum(real(W(1:n+1))); % rescale
 
 end
