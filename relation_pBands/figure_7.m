@@ -1,3 +1,18 @@
+% Authors: Lucas França(1), Yujiang Wang(1,2,3)
+
+% 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
+% University College London, London, United Kingdom
+
+% 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
+% School of Computing Science, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
+% Website: https://lucasfr.github.io/, http://xaphire.de/
+
 %checked by YW 26th July 2017
 clear
 close all
@@ -10,20 +25,20 @@ sampRate = 5000;
 %% iEEG.ORG SESSION (PLEASE REPLACE xxx WITH YOUR DETAILS)
 
 % session = IEEGSession(id,'lucasfr','luc_ieeglogin.bin');
-% 
+%
 % Channels = session.data.channelLabels;
-% 
+%
 % sampRate = session.data.sampleRate;
 % nCh=length(Channels);
-% 
+%
 % szPoint = 25220;
 % szStart = 901;
 % szStop = szStart + 25290.5 - szPoint;
-% 
+%
 % values = session.data.getvalues((szPoint-900)*sampRate:...
 %     (szPoint+900)*sampRate, 2);
-% 
-% 
+%
+%
 % save('figure_7.mat','values')
 
 %% LOADING DATA (YOU CAN ALSO DOWNLOAD IT FROM iEEG.ORG - JUST UNCOMMENT)

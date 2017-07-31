@@ -1,4 +1,21 @@
-%%% THIS FUNCTION WAS DEVELOPED IN ORDER TO ESTIMATE THE MULTIFRACTAL SPECTRA 
+% Authors: Lucas França(1), Yujiang Wang(1,2,3), José Garcia Vivas Miranda(4)
+
+% 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
+% University College London, London, United Kingdom
+
+% 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
+% School of Computing Science, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% 4 Institute of Physics, Federal University of Bahia, Salvador, Bahia, Brazil
+
+% email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
+% Website: https://lucasfr.github.io/, http://xaphire.de/
+
+%%% THIS FUNCTION WAS DEVELOPED IN ORDER TO ESTIMATE THE MULTIFRACTAL SPECTRA
 %%% FROM TIME SERIES AND WAS DEVOLEP BASED ON A CODE ORIGINALLY WRITTEN BY
 %%% J. G. V. MIRANDA, modified by L. G. S. FRANCA. It is based on the
 %%% publication by Chhabra & Jensen 1989 PRL.
@@ -12,7 +29,7 @@
 function [alpha,falpha,Dq,Rsqr_alpha,Rsqr_falpha,Rsqr_Dq,muScale,Md,Ma,Mf]=ChhabraJensen_Yuj_w0(Timeseries,qValues,scales)
 %INPUT:
 %Timeseries, qValues, and scales are all row vectors
-%This function assumes that your time series is all positive values (sigm transform it if needed) 
+%This function assumes that your time series is all positive values (sigm transform it if needed)
 %None of the qValue can be between 0 and 1.
 
 %OUTPUT:
@@ -31,73 +48,73 @@ function [alpha,falpha,Dq,Rsqr_alpha,Rsqr_falpha,Rsqr_Dq,muScale,Md,Ma,Mf]=Chhab
     Ma=zeros(nq,ns);
     Mf=zeros(nq,ns);
     Md=zeros(nq,ns);
-    
+
     muScale=-log10((2.^scales));
     %muScale=[muScale 0];
-    
+
     alpha=zeros(nq,1);
     falpha=zeros(nq,1);
     Dq=zeros(nq,1);
-    
+
     Rsqr_alpha=zeros(nq,1);
     Rsqr_falpha=zeros(nq,1);
     Rsqr_Dq=zeros(nq,1);
-    
-    
+
+
     %% calculating Ma_ij Mf_ij Md_ij
     for i=1:nq
         q=qValues(i);
         for j=1:ns
-            
+
             %determine how many windows we will have at this scale
             window=2^scales(j);
-            
+
             %break the time series into windows & sum
             TimeseriesReshaped=reshape(Timeseries,[],window);
             TimeseriesSummed=sum(Timeseries);
-            
+
             %calculate p
             ps=sum(TimeseriesReshaped,1);
             p=ps./TimeseriesSummed;
-            
-            
+
+
             Nor=sum(p.^q);
-            
-            
+
+
             %calculation of Md
             Md(i,j)=log10(Nor);%not accounting for q between 0 and 1
             if q<=1 && q>0
                 Md(i,j)=sum(p.*log10(p))/Nor;
             end
-            
+
             %Ma & Mf
             mu=(p.^q)/Nor;
             Ma(i,j)=sum(mu.*log10(p));
             Mf(i,j)=sum(mu.*log10(mu));
-            
+
         end%looping through scales
-        
-        
+
+
         %% regression part
         [b_Ma,R2_Ma]=fitting(muScale,Ma(i,:));
         [b_Mf,R2_Mf]=fitting(muScale,Mf(i,:));
         [b_Md,R2_Md]=fitting(muScale,Md(i,:));
-        
+
         alpha(i)=b_Ma;
         falpha(i)=b_Mf;
         Dq(i)=b_Md/(q-1);
         if q<=1 && q>0
                 Dq(i)=b_Md;
         end
-        
+
         Rsqr_alpha(i)=R2_Ma;
         Rsqr_falpha(i)=R2_Mf;
         Rsqr_Dq(i)=R2_Md;
-        
+
     end%looping through qValues
-    
-    
-    
+
+
+
 end % end of main function
 
 %% fitting function

@@ -1,3 +1,18 @@
+% Authors: Lucas França(1), Yujiang Wang(1,2,3)
+
+% 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
+% University College London, London, United Kingdom
+
+% 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
+% School of Computing Science, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
+% Website: https://lucasfr.github.io/, http://xaphire.de/
+
 function [pBandMat] = powerBands(series,sampRate,segmentSize)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,7 +91,7 @@ rippleP = zeros(length(ripple(1,:)),1);
 rawP = zeros(length(raw(1,:)),1);
 
 for i=1:length(delta(1,:))
-    
+
     deltaP(i,1) = sumsqr(delta(:,i));
     thetaP(i,1) = sumsqr(theta(:,i));
     alphaP(i,1) = sumsqr(alpha(:,i));
@@ -85,7 +100,7 @@ for i=1:length(delta(1,:))
     hGammaP(i,1) = sumsqr(hGamma(:,i));
     rippleP(i,1) = sumsqr(ripple(:,i));
     rawP(i,1) = sumsqr(raw(:,i));
-    
+
 end
 
 % RELATIVE POWER

@@ -1,3 +1,18 @@
+% Authors: Lucas França(1), Yujiang Wang(1,2,3)
+
+% 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
+% University College London, London, United Kingdom
+
+% 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
+% School of Computing Science, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
+% Website: https://lucasfr.github.io/, http://xaphire.de/
+
 % checked by YW on 22nd July 2017
 
 clear
@@ -6,7 +21,7 @@ addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
 %% SETTING PARAMETERS
 
 qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01'; seg = '1';
-chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451; 
+chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451;
 sampRate = 5000;
 
 szStop = szStart + szPointF - szPoint;
@@ -14,13 +29,13 @@ szStop = szStart + szPointF - szPoint;
 %% iEEG.ORG SESSION (PLEASE REPLACE xxx WITH YOUR DETAILS)
 
 % session = IEEGSession(id,'xxx','xxx');
-% 
+%
 % Channels = session.data.channelLabels;
 % sampRate = session.data.sampleRate;
 % nCh=length(Channels);
 % values = session.data.getvalues((szPoint-450)*sampRate:...
 %     (szPoint+450)*sampRate, chNum);
-% 
+%
 % save('figure_5a.mat','values')
 
 load('figure_5a.mat')%to save downloading frm the iEEG portal, we provide the data we used as a mat file
@@ -34,8 +49,8 @@ load('figure_5a.mat')%to save downloading frm the iEEG portal, we provide the da
 %% ESTIMATING THE MULTIFRACTAL SPECTRA
 
 % THIS SEGMENT OF THE CODE PERFORMS SUCESSIVE ChJ OPERATIONS WITH DIFFERENT
-% WINDOW LENGTHS AND DOWNSAMPLINGS AND SHOULD TAKE A WHILE. SIGNALS WITH 
-% DIFFERENT SAMPLING RATES SHOULD HAVE THE FOLLOWING SECTION ADAPTED 
+% WINDOW LENGTHS AND DOWNSAMPLINGS AND SHOULD TAKE A WHILE. SIGNALS WITH
+% DIFFERENT SAMPLING RATES SHOULD HAVE THE FOLLOWING SECTION ADAPTED
 % ACCORDING TO THE ORIGINAL SAMPLING FREQUENCY.
 
 %% 5000Hz

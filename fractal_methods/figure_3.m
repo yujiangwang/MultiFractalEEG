@@ -1,9 +1,24 @@
+% Authors: Lucas França(1), Yujiang Wang(1,2,3)
+
+% 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
+% University College London, London, United Kingdom
+
+% 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
+% School of Computing Science, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
+% United Kingdom
+
+% email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
+% Website: https://lucasfr.github.io/, http://xaphire.de/
+
 %% Results successfully reproduced by YW (20/July/2017)
 %% External function such as dfa() and Higuchi_FD() were not checked in detail
 clear
 close all
 clc
-addpath(genpath('~/GitHub/MultiFractalEEG/libs/'))
+addpath(genpath('../libs/'))
 
 %% PARAMETERS
 
@@ -20,37 +35,37 @@ series = zeros(1800*segSize,length(stdFactor));
 
 
 for j = 1:length(stdFactor)
-    
-    
+
+
     io = 450;
     iSz = 900;
-    
+
     %% STANDARD DEVIATION FUNCTION
-    
+
     for i = io:iSz
-        
+
         stdPat(i,j) = stdPat(i,j) + stdFactor(j)*(i-io);
-        
+
     end
-    
+
     %% TWEAKED FRACTIONAL BROWNIAN MOTION
-            
+
     for i = 1:1800
-        
+
         if i == 1
-            
+
             [W] = tweakedFBM(segSize,0.7,0,i,stdPat(i,j));
-            
+
         else
-            
+
             [W] = tweakedFBM(segSize,0.7,W(1025),i,stdPat(i,j));
-            
+
         end
-        
+
         series((1+(segSize*(i-1))):(segSize+(segSize*(i-1))),j) =...
             W(1:segSize);
      end
-    
+
 end
 
 %% DFA AND DESCRIPTIVE STATISTICS
@@ -66,7 +81,7 @@ for j = 1:length(stdFactor)
     tic
     [mVal(:,j),stdVal(:,j),~] = mstdvar(series(:,j)',2,512);
     toc
-   
+
 end
 
 %% HIGUCHI METHOD
