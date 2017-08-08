@@ -93,7 +93,8 @@ end
 function y2 = next_step_1d(y, p)
 
 len = numel(y);
-
+rng('default');
+rng(42);
 y2 = zeros(1,len*2);
 sign = rand(1, len)-0.5;
 sign = sign./abs(sign);
