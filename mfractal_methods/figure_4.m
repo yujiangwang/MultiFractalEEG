@@ -25,7 +25,7 @@ segmentSize = 1024; qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0;
 %% GENERATING A MULTIFRACTAL PROFILE WITH p-MODEL
 
 % THE GENERATED DATA HAS 64 EPOCHS WITH THE segmentSize AND p = 0.4
-data = pmodel(segmentSize*64, 0.4);
+data = horzcat(pmodel(segmentSize*64, 0.375));
 
 %% ESTIMATING THE MULTIFRACTAL SPECTRA
 
@@ -71,7 +71,7 @@ xlim([2 2*length(mfdfa.width(:,2))])
 ylim([0.1 1.1])
 set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
-ttl = title('Multifractal spectra width (sigmoid) | p-Model (p = 0.4)');
+ttl = title('Multifractal spectra width (sigmoid) | p-Model');
 ttl.FontSize = 16;
 
 print -depsc2 -painters meth_pModel_comp_sig_width_unfilt.eps
@@ -104,7 +104,7 @@ xlim([2 2*length(mfdfa.width(:,2))])
 ylim([0.1 1.1])
 set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
-ttl = title('Multifractal spectra width | p-Model (p = 0.4)');
+ttl = title('Multifractal spectra width | p-Model');
 ttl.FontSize = 16;
 
 print -depsc2 -painters meth_pModel_comp_width_unfilt.eps
@@ -133,7 +133,7 @@ xlim([2 2*length(mfdfa.deltaF(:,2))])
 ylim([0.1 3.4])
 set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
-ttl = title('Multifractal spectra height (sigmoid) | p-Model (p = 0.4)');
+ttl = title('Multifractal spectra height (sigmoid) | p-Model');
 ttl.FontSize = 16;
 
 
@@ -164,7 +164,7 @@ xlim([2 2*length(mfdfa.deltaF(:,2))])
 ylim([0.1 3.4])
 set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
-ttl = title('Multifractal spectra height | p-Model (p = 0.4)');
+ttl = title('Multifractal spectra height | p-Model');
 ttl.FontSize = 16;
 
 

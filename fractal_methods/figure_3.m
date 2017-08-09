@@ -91,24 +91,24 @@ toc
 [HigFDn] = higuchi_nr_meth_n(series(:,4)',segSize,4);
 
 
-%% PLOTTING THE FIGURES
-
-h = figure;
-
-window = segSize;
-noverlap = window/2;
-nfft = 256;
-fs = 512;
-
-spectrogram(series(:,4), window, noverlap, nfft, fs,'yaxis');
-colormap(parula)
-ylim([0 128])
-
-set(gca,'FontSize',20,'FontName','Times')
-set(gca,'LineWidth',1.5)
-
-print -depsc2 -painters fract_spectr.eps
-print -dpng fract_spectr.png
+% %% PLOTTING THE FIGURES
+% 
+% h = figure;
+% 
+% window = segSize;
+% noverlap = window/2;
+% nfft = 256;
+% fs = 512;
+% 
+% spectrogram(series(:,4), window, noverlap, nfft, fs,'yaxis');
+% colormap(parula)
+% ylim([0 128])
+% 
+% set(gca,'FontSize',20,'FontName','Times')
+% set(gca,'LineWidth',1.5)
+% 
+% print -depsc2 -painters fract_spectr.eps
+% print -dpng fract_spectr.png
 
 
 fractalsMat = horzcat(dfaFD(:,4),dfaFDn(:,4),HigFD,HigFDn,stdVal(:,4),...
