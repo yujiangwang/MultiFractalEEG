@@ -34,13 +34,13 @@ for e = 1:chNumber
     electrode = reshape(electrode,segmentSize,[]);
     tam = size(electrode);
 
-    disp([num2str(col/tam(2)*100) '%'])
 
 
     %% LOOP OVER THE SEGMENTS OF THE CHANNEL RECORDING
     for col = 1:tam(2)
 
         electr = electrode(:,col);
+        disp([num2str(col/tam(2)*100) '%'])
 
 
         % HIGUCHI METHOD CALL
