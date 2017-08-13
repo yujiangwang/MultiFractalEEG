@@ -205,7 +205,7 @@ set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
 
 subplot(3,1,2)
-plot((1:length(series))/512,series(:,4),'Color',[202 0 32]./255, ...
+plot((1:length(series))/512,series(:,4),'Color',[178 24 43]./255, ...
     'LineWidth',1)
 title('Simulated time series')
 xlim([0 3600])
@@ -217,7 +217,7 @@ set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
 
 subplot(3,1,3)
-plot((2:2:2*length(fractalsMat(:,5))),fractalsMat(:,5),'Color',[5 113 176]./255, ...
+plot((2:2:2*length(fractalsMat(:,5))),fractalsMat(:,5),'Color',[33 102 172]./255, ...
     'LineWidth',1)
 hold on
 plot(2:2:2*length(smoothdata(fractalsMat(:,5),'movmedian',50)),...
