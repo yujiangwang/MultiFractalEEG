@@ -39,7 +39,7 @@ sampRate = 512;
 x = (data - mean(data))/std(data);
 sigma = 1./(1 + exp(-x));
 
-[chjAll.deltaF,chjAll.width] = ...
+[chjAll.width,chjAll.deltaF] = ...
     chj_nr_meth_n(sigma,segmentSize,qi,qf,dq,Np,Ra,Io);
 
 %% STANDARD DEVIATION AND MEN
