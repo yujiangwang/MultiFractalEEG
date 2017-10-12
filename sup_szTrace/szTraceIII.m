@@ -21,15 +21,19 @@ addpath(genpath('../libs/'))
 %% OPENING THE DATA
 
 load('I001_P005_D01.mat');
-data = values;
 
 %% SETTING PARAMETERS
 
 qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01'; seg = '1';
 chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451;
-sampRate = 5000; segmentSize = 2048; tWindow = segmentSize/sampRate;
+sampRate = 5000; segmentSize = 8192; tWindow = segmentSize/sampRate;
 
 szStop = szStart + szPointF - szPoint;
+
+%% FILTERING COMPONENTS OF FREQUENCIES BELLOW 1 Hz TO REMOVE DC SHIFTS
+
+[b,a] = butter(2, 1/(sampRate/2), 'high');
+data = filtfilt(b,a,values);
 
 %% MULTIFRACTAL SPECTRA (NORMALISED PER EPOCH)
 
@@ -37,7 +41,7 @@ segmentSize = sampRate*tWindow;
 siz = floor(length(data)/segmentSize)*segmentSize;
 data = data(1:siz,1);
 
-[chj.width,chj.deltaF] = ...
+[chj.deltaF,chj.width] = ...
     chj_nr_meth(data',segmentSize,qi,qf,dq,Np,Ra,Io);
 
 
@@ -54,7 +58,7 @@ ll = llength(data',sampRate,tWindow);
 %% PLOTTING
 
 figure
-ttime = 899.8912/length(data):899.8912/length(data):length(data)/5000;
+ttime = length(data)/5000/length(data):length(data)/5000/length(data):length(data)/5000;
 subplot(4,1,1)
 plot(ttime,data)
 xlim([899.8912/length(data) 899.8912])
@@ -102,13 +106,13 @@ title('Line Length')
 % dtime=2:2:2*length(chj.width(:,2));
 % chts=chj.width(:,2);
 % stdts=dStat(:,2);
-% 
+%
 % tid=dtime<1800 & dtime>800;
 % figure(1)
 % scatter(chts(tid),stdts(tid));
 % lsline
 % figure(2)
 % ndhist([chts(tid),stdts(tid)])
-% 
-% 
+%
+%
 % [c,p]=corr(chts(tid),stdts(tid))
