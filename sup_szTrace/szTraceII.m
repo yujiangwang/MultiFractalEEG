@@ -24,7 +24,7 @@ load('JR_12062011_1630_1730_ch1.mat');
 
 %% SETTING PARAMETERS
 
-tWindow = 2; segmentSize = 1024; qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0;
+tWindow = 4; segmentSize = 2048; qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0;
 sampRate = 512;
 
 %% MULTIFRACTAL SPECTRA (NORMALISED PER EPOCH)
@@ -55,9 +55,9 @@ xlabel('Time (s)')
 ylabel('\muV')
 title('EEG - channel 1')
 subplot(4,1,2)
-plot(2:2:2*length(chj.width(:,2)),chj.width(:,2))
+plot(4:4:4*length(chj.width(:,2)),chj.width(:,2))
 hold on
-plot(2:2:2*length(smoothdata(chj.width(:,2),'movmedian',50)),...
+plot(4:4:4*length(smoothdata(chj.width(:,2),'movmedian',50)),...
     smoothdata(chj.width(:,2),'movmedian',50),'Color',[0 0 0]./255,...
     'LineWidth',2)
 hold off
@@ -67,9 +67,9 @@ xlabel('Time (s)')
 ylabel('\Delta\alpha')
 title('Multifractal spectra width')
 subplot(4,1,3)
-plot(2:2:2*length(dStat(:,2)),dStat(:,2))
+plot(4:4:4*length(dStat(:,2)),dStat(:,2))
 hold on
-plot(2:2:2*length(smoothdata(dStat(:,2),'movmedian',50)),...
+plot(4:4:4*length(smoothdata(dStat(:,2),'movmedian',50)),...
     smoothdata(dStat(:,2),'movmedian',50),'Color',[0 0 0]./255,...
     'LineWidth',2)
 hold off
@@ -78,9 +78,9 @@ xlabel('Time (s)')
 ylabel('\sigma')
 title('St. Deviation')
 subplot(4,1,4)
-plot(2:2:2*length(ll),ll)
+plot(4:4:4*length(ll),ll)
 hold on
-plot(2:2:2*length(smoothdata(ll,'movmedian',50)),...
+plot(4:4:4*length(smoothdata(ll,'movmedian',50)),...
     smoothdata(ll,'movmedian',50),'Color',[0 0 0]./255,...
     'LineWidth',2)
 hold off
@@ -91,16 +91,16 @@ title('Line Length')
 
 
 %% Yuj's hacking exploration
-dtime=2:2:2*length(chj.width(:,2));
-chts=chj.width(:,2);
-stdts=dStat(:,2);
-
-tid=dtime<1800 & dtime>800;
-figure(1)
-scatter(chts(tid),stdts(tid));
-lsline
-figure(2)
-ndhist([chts(tid),stdts(tid)])
-
-
-[c,p]=corr(chts(tid),stdts(tid))
+% dtime=2:2:2*length(chj.width(:,2));
+% chts=chj.width(:,2);
+% stdts=dStat(:,2);
+% 
+% tid=dtime<1800 & dtime>800;
+% figure(1)
+% scatter(chts(tid),stdts(tid));
+% lsline
+% figure(2)
+% ndhist([chts(tid),stdts(tid)])
+% 
+% 
+% [c,p]=corr(chts(tid),stdts(tid))

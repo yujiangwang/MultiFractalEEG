@@ -21,7 +21,7 @@ signal = signal(1,1:siz);
 signal = reshape(signal,tWindow*sampRate,[]);
 ll = zeros(length(signal),1);
 
-for i=1:length(signal)
+for i=1:size(signal,2)
 
    sig = signal(:,i);
    summation = 0;

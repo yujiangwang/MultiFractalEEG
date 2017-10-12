@@ -47,7 +47,7 @@ load('figure_5bSupII.mat')
 
 %% LOOP OVER THE CHANNELS OF INTEREST (SOZ channels)
 
-for chNum = [20]
+for chNum = [13,14]
 
     % SEIZURE SEGMENTS
 
