@@ -26,7 +26,7 @@ load('I001_P005_D01.mat');
 
 qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01'; seg = '1';
 chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451;
-sampRate = 5000; segmentSize = 8192; tWindow = segmentSize/sampRate;
+sampRate = 5000; segmentSize = 2048; tWindow = segmentSize/sampRate;
 
 szStop = szStart + szPointF - szPoint;
 
@@ -61,6 +61,12 @@ figure
 ttime = length(data)/5000/length(data):length(data)/5000/length(data):length(data)/5000;
 subplot(4,1,1)
 plot(ttime,data)
+hold on
+plot([szStart szStart],[min(data) max(data)],'Color',[202 0 32]./255, ...
+    'LineWidth',2)
+plot([szStop szStop],[min(data) max(data)],'Color', [202 0 32]./255, ...
+    'LineWidth',2)
+hold off
 xlim([899.8912/length(data) 899.8912])
 ylim([min(data) max(data)])
 xlabel('Time (s)')
@@ -72,9 +78,13 @@ hold on
 plot(tWindow:tWindow:tWindow*length(smoothdata(chj.width(:,2),'movmedian',50)),...
     smoothdata(chj.width(:,2),'movmedian',50),'Color',[0 0 0]./255,...
     'LineWidth',2)
+plot([szStart szStart],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
+    [202 0 32]./255, 'LineWidth',2)
+plot([szStop szStop],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
+    [202 0 32]./255, 'LineWidth',2)
 hold off
 xlim([899.8912/length(data) 899.8912])
-%ylim([0.5 1.5])
+ylim([min(chj.width(:,2)) max(chj.width(:,2))])
 xlabel('Time (s)')
 ylabel('\Delta\alpha')
 title('Multifractal spectra width')
@@ -84,8 +94,13 @@ hold on
 plot(tWindow:tWindow:tWindow*length(smoothdata(dStat(:,2),'movmedian',50)),...
     smoothdata(dStat(:,2),'movmedian',50),'Color',[0 0 0]./255,...
     'LineWidth',2)
+plot([szStart szStart],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
+    [202 0 32]./255, 'LineWidth',2)
+plot([szStop szStop],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
+    [202 0 32]./255, 'LineWidth',2)
 hold off
 xlim([899.8912/length(data) 899.8912])
+ylim([min(dStat(:,2)) max(dStat(:,2))])
 xlabel('Time (s)')
 ylabel('\sigma')
 title('St. Deviation')
@@ -95,8 +110,13 @@ hold on
 plot(tWindow:tWindow:tWindow*length(smoothdata(ll,'movmedian',50)),...
     smoothdata(ll,'movmedian',50),'Color',[0 0 0]./255,...
     'LineWidth',2)
+plot([szStart szStart],[min(ll) max(ll)],'Color',[202 0 32]./255, ...
+    'LineWidth',2)
+plot([szStop szStop],[min(ll) max(ll)],'Color', [202 0 32]./255, ...
+    'LineWidth',2)
 hold off
 xlim([899.8912/length(data) 899.8912])
+ylim([min(ll) max(ll)])
 xlabel('Time (s)')
 ylabel('LL')
 title('Line Length')
