@@ -15,7 +15,7 @@
 
 
 clear
-close all
+%close all
 addpath(genpath('../libs/'))
 
 %% OPENING THE DATA
@@ -34,6 +34,10 @@ szStop = szStart + szPointF - szPoint;
 
 [b,a] = butter(2, 1/(sampRate/2), 'high');
 data = filtfilt(b,a,values);
+
+data = downsample(data,5);
+sampRate = 1000;
+tWindow = segmentSize/sampRate;
 
 %% MULTIFRACTAL SPECTRA (NORMALISED PER EPOCH)
 
@@ -58,7 +62,7 @@ ll = llength(data',sampRate,tWindow);
 %% PLOTTING
 
 figure
-ttime = length(data)/5000/length(data):length(data)/5000/length(data):length(data)/5000;
+ttime = length(data)/sampRate/length(data):length(data)/sampRate/length(data):length(data)/sampRate;
 subplot(4,1,1)
 plot(ttime,data)
 hold on
@@ -67,7 +71,7 @@ plot([szStart szStart],[min(data) max(data)],'Color',[202 0 32]./255, ...
 plot([szStop szStop],[min(data) max(data)],'Color', [202 0 32]./255, ...
     'LineWidth',2)
 hold off
-xlim([899.8912/length(data) 899.8912])
+xlim([400 600])
 ylim([min(data) max(data)])
 xlabel('Time (s)')
 ylabel('\muV')
@@ -83,7 +87,7 @@ plot([szStart szStart],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
 plot([szStop szStop],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
-xlim([899.8912/length(data) 899.8912])
+xlim([400 600])
 ylim([min(chj.width(:,2)) max(chj.width(:,2))])
 xlabel('Time (s)')
 ylabel('\Delta\alpha')
@@ -99,7 +103,7 @@ plot([szStart szStart],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
 plot([szStop szStop],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
-xlim([899.8912/length(data) 899.8912])
+xlim([400 600])
 ylim([min(dStat(:,2)) max(dStat(:,2))])
 xlabel('Time (s)')
 ylabel('\sigma')
@@ -115,7 +119,7 @@ plot([szStart szStart],[min(ll) max(ll)],'Color',[202 0 32]./255, ...
 plot([szStop szStop],[min(ll) max(ll)],'Color', [202 0 32]./255, ...
     'LineWidth',2)
 hold off
-xlim([899.8912/length(data) 899.8912])
+xlim([400 600])
 ylim([min(ll) max(ll)])
 xlabel('Time (s)')
 ylabel('LL')
