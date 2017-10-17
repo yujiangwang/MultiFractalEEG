@@ -24,13 +24,13 @@ load('JR_12062011_1630_1730_ch1.mat');
 
 %% SETTING PARAMETERS
 
-segmentSize = 2048; qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0;
+segmentSize = 1024; qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9;
 sampRate = 512; tWindow = segmentSize/sampRate; szStart = 894773/512; 
 szStop = 907973/512;
 
 %% MULTIFRACTAL SPECTRA (NORMALISED PER EPOCH)
 
-[chj.width,chj.deltaF] = ...
+[chj.deltaF,chj.width] = ...
     chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
 
 

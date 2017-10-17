@@ -1,4 +1,4 @@
-% Authors: Lucas França(1), Yujiang Wang(1,2,3)
+% Authors: Lucas Franca(1), Yujiang Wang(1,2,3)
 
 % 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
 % University College London, London, United Kingdom
@@ -15,48 +15,48 @@
 
 
 clear
-%close all
+close all
 addpath(genpath('../libs/'))
 
 %% OPENING THE DATA
 
-load('I001_P005_D01.mat');
+load('JR_12062011_1630_1730_ch1.mat');
 
 %% SETTING PARAMETERS
 
-qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01'; seg = '1';
-chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451;
-sampRate = 5000; segmentSize = 2048; tWindow = segmentSize/sampRate;
+segmentSize = 1024; qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9;
+sampRate = 512; tWindow = segmentSize/sampRate; szStart = 894773/512; 
+szStop = 907973/512;
 
-szStop = szStart + szPointF - szPoint;
+%% FILTERING DELTA-POWER BAND
 
-%% FILTERING COMPONENTS OF FREQUENCIES BELLOW 1 Hz TO REMOVE DC SHIFTS
+% window = 512;
+% noverlap = window/2;
+% nfft = 256;
+% fs = 512;
+% 
+% spectrogram(data, window, noverlap, nfft, fs,'yaxis')
 
-[b,a] = butter(2, 1/(sampRate/2), 'high');
-data = filtfilt(b,a,values);
+[b,a] = butter(2, 4/(sampRate/2), 'high');
+data = filtfilt(b,a,double(data));
 
-% data = downsample(data,2);
-% sampRate = 2500;
-% tWindow = segmentSize/sampRate;
+% [b,a] = butter(2, 4/(sampRate/2), 'low');
+% data = filtfilt(b,a,double(data));
 
 %% MULTIFRACTAL SPECTRA (NORMALISED PER EPOCH)
 
-segmentSize = sampRate*tWindow;
-siz = floor(length(data)/segmentSize)*segmentSize;
-data = data(1:siz,1);
-
 [chj.deltaF,chj.width] = ...
-    chj_nr_meth(data',segmentSize,qi,qf,dq,Np,Ra,Io);
+    chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
 
 
 %% STANDARD DEVIATION AND MEAN
 
-[~,~,dStat] = mstdvar(data',tWindow,sampRate);
+[~,~,dStat] = mstdvar(data,tWindow,sampRate);
 
 %pBandMat = powerBands(data,sampRate,tWindow);
 %% LINE LENGTH
 
-ll = llength(data',sampRate,tWindow);
+ll = llength(data,sampRate,tWindow);
 
 
 %% PLOTTING
@@ -71,7 +71,7 @@ plot([szStart szStart],[min(data) max(data)],'Color',[202 0 32]./255, ...
 plot([szStop szStop],[min(data) max(data)],'Color', [202 0 32]./255, ...
     'LineWidth',2)
 hold off
-xlim([440 460])
+xlim([2 3600])
 ylim([min(data) max(data)])
 xlabel('Time (s)')
 ylabel('\muV')
@@ -87,7 +87,7 @@ plot([szStart szStart],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
 plot([szStop szStop],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
-xlim([440 460])
+xlim([2 3600])
 ylim([min(chj.width(:,2)) max(chj.width(:,2))])
 xlabel('Time (s)')
 ylabel('\Delta\alpha')
@@ -103,7 +103,7 @@ plot([szStart szStart],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
 plot([szStop szStop],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
-xlim([440 460])
+xlim([2 3600])
 ylim([min(dStat(:,2)) max(dStat(:,2))])
 xlabel('Time (s)')
 ylabel('\sigma')
@@ -119,24 +119,24 @@ plot([szStart szStart],[min(ll) max(ll)],'Color',[202 0 32]./255, ...
 plot([szStop szStop],[min(ll) max(ll)],'Color', [202 0 32]./255, ...
     'LineWidth',2)
 hold off
-xlim([440 460])
+xlim([2 3600])
 ylim([min(ll) max(ll)])
 xlabel('Time (s)')
 ylabel('LL')
 title('Line Length')
 
 
-%% Yuj's hacking exploration
+% %% Yuj's hacking exploration
 % dtime=2:2:2*length(chj.width(:,2));
 % chts=chj.width(:,2);
 % stdts=dStat(:,2);
-%
+% 
 % tid=dtime<1800 & dtime>800;
 % figure(1)
 % scatter(chts(tid),stdts(tid));
 % lsline
 % figure(2)
 % ndhist([chts(tid),stdts(tid)])
-%
-%
+% 
+% 
 % [c,p]=corr(chts(tid),stdts(tid))
