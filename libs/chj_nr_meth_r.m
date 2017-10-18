@@ -1,19 +1,19 @@
 % Authors: Lucas Franca(1), Yujiang Wang(1,2,3)
-
-% 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
-% University College London, London, United Kingdom
-
-% 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
-% School of Computing Science, Newcastle University, Newcastle upon Tyne,
-% United Kingdom
-
+%
+% 1 Department of Clinical and Experimental Epilepsy, UCL Institute of 
+% Neurology, University College London, London, United Kingdom
+%
+% 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research 
+% group, School of Computing Science, Newcastle University, Newcastle upon 
+% Tyne, United Kingdom
+%
 % 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
 % United Kingdom
-
+%
 % email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
 % Website: https://lucasfr.github.io/, http://xaphire.de/
 
-function [deltaF,width] = chj_nr_meth_n(data,segmentSize,qi,qf,dq,Np,Ra,Io)
+function [deltaF,width] = chj_nr_meth_r(data,segmentSize,qi,qf,dq,Np,Ra,Io)
 
 %this is the Chhabra Jensen method that applies directly to the data without any
 %prior transformations. Note that only non-negative numbers should be used.
@@ -59,10 +59,9 @@ for e = 1:chNumber
     %% LOOP OVER THE SEGMENTS OF THE CHANNEL RECORDING
     for col = 1:tam(2)
 
-        %         electr = electrode(:,col);
-        %         x = (electr - mean(electr))/std(electr);
-        %         sigma = 1./(1 + exp(-x));
-        sigma = electrode(:,col);
+        electr = electrode(:,col);
+        x = (electr - mean(data(e,:)))/std(data(e,:));
+        sigma = 1./(1 + exp(-x));
 
 
         % CHHABRA-JENSEN METHOD CALL
