@@ -47,22 +47,24 @@ ll = llength(data,sampRate,tWindow);
 %% PLOTTING
 
 figure
-ttime = length(data)/sampRate/length(data):length(data)/sampRate/length(data):length(data)/sampRate;
+ttime = length(data)/sampRate/length(data):length(data)/sampRate/...
+    length(data):length(data)/sampRate;
 subplot(4,1,1)
-plot(ttime,data)
+plot(ttime,data,'Color',[0 104 55]./255)
 hold on
 plot([szStart szStart],[min(data) max(data)],'Color',[202 0 32]./255, ...
     'LineWidth',2)
 plot([szStop szStop],[min(data) max(data)],'Color', [202 0 32]./255, ...
     'LineWidth',2)
 hold off
-xlim([700 1800])
+xlim([2 3600])
 ylim([min(data) max(data)])
 xlabel('Time (s)')
 ylabel('\muV')
 title('EEG - channel 1')
 subplot(4,1,2)
-plot(tWindow:tWindow:tWindow*length(chj.width(:,2)),chj.width(:,2))
+plot(tWindow:tWindow:tWindow*length(chj.width(:,2)),chj.width(:,2),...
+    'Color',[0 104 55]./255)
 hold on
 plot(tWindow:tWindow:tWindow*length(smoothdata(chj.width(:,2),'movmedian',50)),...
     smoothdata(chj.width(:,2),'movmedian',50),'Color',[0 0 0]./255,...
@@ -72,7 +74,7 @@ plot([szStart szStart],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
 plot([szStop szStop],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
-xlim([700 1800])
+xlim([2 3600])
 ylim([min(chj.width(:,2)) max(chj.width(:,2))])
 xlabel('Time (s)')
 ylabel('\Delta\alpha')
@@ -88,7 +90,7 @@ plot([szStart szStart],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
 plot([szStop szStop],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
-xlim([700 1800])
+xlim([2 3600])
 ylim([min(dStat(:,2)) max(dStat(:,2))])
 xlabel('Time (s)')
 ylabel('\sigma')
@@ -104,7 +106,7 @@ plot([szStart szStart],[min(ll) max(ll)],'Color',[202 0 32]./255, ...
 plot([szStop szStop],[min(ll) max(ll)],'Color', [202 0 32]./255, ...
     'LineWidth',2)
 hold off
-xlim([700 1800])
+xlim([2 3600])
 ylim([min(ll) max(ll)])
 xlabel('Time (s)')
 ylabel('LL')
