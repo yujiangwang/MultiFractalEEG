@@ -86,7 +86,7 @@ plot([szStop szStop],[min(chj.widthR(:,2)) max(chj.widthR(:,2))],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
 xlim([2 3600])
-ylim([min(chj.widthR(:,2)) max(chj.widthR(:,2))])
+ylim([0.2 0.8])
 xlabel('Time (s)')
 ylabel('\Delta\alpha')
 title('Multifractal spectra width')
@@ -97,13 +97,13 @@ hold on
 plot(tWindow:tWindow:tWindow*length(smoothdata(chj.width(:,2),'movmedian',...
     50)),smoothdata(chj.width(:,2),'movmedian',50),'Color',[0 0 0]./255,...
     'LineWidth',2)
-plot([szStart szStart],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
+plot([szStart szStart],[min(chj.width(:,2)) 0.8],'Color',...
     [202 0 32]./255, 'LineWidth',2)
-plot([szStop szStop],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
+plot([szStop szStop],[min(chj.width(:,2)) 0.8],'Color',...
     [202 0 32]./255, 'LineWidth',2)
 hold off
 xlim([2 3600])
-ylim([min(chj.width(:,2)) max(chj.width(:,2))])
+ylim([0.2 0.8])
 xlabel('Time (s)')
 ylabel('\Delta\alpha')
 title('Multifractal spectra width (normalised)')
@@ -142,140 +142,140 @@ ylabel('LL')
 title('Line Length')
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% I001_P005_D01
-
-clear
-
-%% OPENING THE DATA
-
-load('I001_P005_D01.mat');
-
-%% SETTING PARAMETERS
-
-qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01'; seg = '1';
-chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451;
-sampRate = 5000; segmentSize = 1024; tWindow = segmentSize/sampRate;
-
-szStop = szStart + szPointF - szPoint;
-
-%% FILTERING COMPONENTS OF FREQUENCIES BELLOW 1 Hz TO REMOVE DC SHIFTS
-
-[b,a] = butter(2, 1/(sampRate/2), 'high');
-data = filtfilt(b,a,values);
-
-%% TRIMMING TIME SERIES
-
-segmentSize = sampRate*tWindow;
-siz = floor(length(data)/segmentSize)*segmentSize;
-data = data(1:siz,1)';
-
-%% MULTIFRACTAL SPECTRA (NORMALISED FOR THE WHOLE SEGMENT)
-
-[chj.deltaFR,chj.widthR] = ...
-    chj_nr_meth_r(data,segmentSize,qi,qf,dq,Np,Ra,Io);
-
-%% MULTIFRACTAL SPECTRA (NORMALISED PER EPOCH)
-
-[chj.deltaF,chj.width] = ...
-    chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
-
-
-%% STANDARD DEVIATION AND MEAN
-
-[~,~,dStat] = mstdvar(data,tWindow,sampRate);
-
-%pBandMat = powerBands(data,sampRate,tWindow);
-%% LINE LENGTH
-
-ll = llength(data,sampRate,tWindow);
-
-
-%% PLOTTING
-
-figure
-ttime = length(data)/sampRate/length(data):length(data)/sampRate/...
-    length(data):length(data)/sampRate;
-subplot(5,1,1,'Color',[8 69 148]./255)
-plot(ttime,data)
-hold on
-plot([szStart szStart],[min(data) max(data)],'Color',[202 0 32]./255, ...
-    'LineWidth',2)
-plot([szStop szStop],[min(data) max(data)],'Color', [202 0 32]./255, ...
-    'LineWidth',2)
-hold off
-xlim([0 890])
-ylim([min(data) max(data)])
-xlabel('Time (s)')
-ylabel('\muV')
-title('EEG')
-subplot(5,1,2)
-plot(tWindow:tWindow:tWindow*length(chj.widthR(:,2)),chj.widthR(:,2),...
-    'Color',[33 113 181]./255)
-hold on
-plot(tWindow:tWindow:tWindow*length(smoothdata(chj.width(:,2),'movmedian',50)),...
-    smoothdata(chj.widthR(:,2),'movmedian',50),'Color',[0 0 0]./255,...
-    'LineWidth',2)
-plot([szStart szStart],[min(chj.widthR(:,2)) max(chj.widthR(:,2))],'Color',...
-    [202 0 32]./255, 'LineWidth',2)
-plot([szStop szStop],[min(chj.widthR(:,2)) max(chj.widthR(:,2))],'Color',...
-    [202 0 32]./255, 'LineWidth',2)
-hold off
-xlim([0 890])
-ylim([min(chj.widthR(:,2)) max(chj.widthR(:,2))])
-xlabel('Time (s)')
-ylabel('\Delta\alpha')
-title('Multifractal spectra width')
-subplot(5,1,3)
-plot(tWindow:tWindow:tWindow*length(chj.width(:,2)),chj.width(:,2),...
-    'Color',[66 146 198]./255)
-hold on
-plot(tWindow:tWindow:tWindow*length(smoothdata(chj.width(:,2),'movmedian',50)),...
-    smoothdata(chj.width(:,2),'movmedian',50),'Color',[0 0 0]./255,...
-    'LineWidth',2)
-plot([szStart szStart],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
-    [202 0 32]./255, 'LineWidth',2)
-plot([szStop szStop],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
-    [202 0 32]./255, 'LineWidth',2)
-hold off
-xlim([0 890])
-ylim([min(chj.width(:,2)) max(chj.width(:,2))])
-xlabel('Time (s)')
-ylabel('\Delta\alpha')
-title('Multifractal spectra width (normalised)')
-subplot(5,1,4)
-plot(tWindow:tWindow:tWindow*length(dStat(:,2)),dStat(:,2),...
-    'Color',[107 174 214]./255)
-hold on
-plot(tWindow:tWindow:tWindow*length(smoothdata(dStat(:,2),'movmedian',50)),...
-    smoothdata(dStat(:,2),'movmedian',50),'Color',[0 0 0]./255,...
-    'LineWidth',2)
-plot([szStart szStart],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
-    [202 0 32]./255, 'LineWidth',2)
-plot([szStop szStop],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
-    [202 0 32]./255, 'LineWidth',2)
-hold off
-xlim([0 890])
-ylim([min(dStat(:,2)) max(dStat(:,2))])
-xlabel('Time (s)')
-ylabel('\sigma')
-title('St. Deviation')
-subplot(5,1,5)
-plot(tWindow:tWindow:tWindow*length(ll),ll,'Color',[158 202 225]./255)
-hold on
-plot(tWindow:tWindow:tWindow*length(smoothdata(ll,'movmedian',50)),...
-    smoothdata(ll,'movmedian',50),'Color',[0 0 0]./255,...
-    'LineWidth',2)
-plot([szStart szStart],[min(ll) max(ll)],'Color',[202 0 32]./255, ...
-    'LineWidth',2)
-plot([szStop szStop],[min(ll) max(ll)],'Color', [202 0 32]./255, ...
-    'LineWidth',2)
-hold off
-xlim([0 890])
-ylim([min(ll) max(ll)])
-xlabel('Time (s)')
-ylabel('LL')
-title('Line Length')
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% I001_P005_D01
+% 
+% clear
+% 
+% %% OPENING THE DATA
+% 
+% load('I001_P005_D01.mat');
+% 
+% %% SETTING PARAMETERS
+% 
+% qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01'; seg = '1';
+% chNum = 1; szPoint = 25220; szPointF = 25290.5; szStart = 451;
+% sampRate = 5000; segmentSize = 1024; tWindow = segmentSize/sampRate;
+% 
+% szStop = szStart + szPointF - szPoint;
+% 
+% %% FILTERING COMPONENTS OF FREQUENCIES BELLOW 1 Hz TO REMOVE DC SHIFTS
+% 
+% [b,a] = butter(2, 1/(sampRate/2), 'high');
+% data = filtfilt(b,a,values);
+% 
+% %% TRIMMING TIME SERIES
+% 
+% segmentSize = sampRate*tWindow;
+% siz = floor(length(data)/segmentSize)*segmentSize;
+% data = data(1:siz,1)';
+% 
+% %% MULTIFRACTAL SPECTRA (NORMALISED FOR THE WHOLE SEGMENT)
+% 
+% [chj.deltaFR,chj.widthR] = ...
+%     chj_nr_meth_r(data,segmentSize,qi,qf,dq,Np,Ra,Io);
+% 
+% %% MULTIFRACTAL SPECTRA (NORMALISED PER EPOCH)
+% 
+% [chj.deltaF,chj.width] = ...
+%     chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
+% 
+% 
+% %% STANDARD DEVIATION AND MEAN
+% 
+% [~,~,dStat] = mstdvar(data,tWindow,sampRate);
+% 
+% %pBandMat = powerBands(data,sampRate,tWindow);
+% %% LINE LENGTH
+% 
+% ll = llength(data,sampRate,tWindow);
+% 
+% 
+% %% PLOTTING
+% 
+% figure
+% ttime = length(data)/sampRate/length(data):length(data)/sampRate/...
+%     length(data):length(data)/sampRate;
+% subplot(5,1,1,'Color',[8 69 148]./255)
+% plot(ttime,data)
+% hold on
+% plot([szStart szStart],[min(data) max(data)],'Color',[202 0 32]./255, ...
+%     'LineWidth',2)
+% plot([szStop szStop],[min(data) max(data)],'Color', [202 0 32]./255, ...
+%     'LineWidth',2)
+% hold off
+% xlim([0 890])
+% ylim([min(data) max(data)])
+% xlabel('Time (s)')
+% ylabel('\muV')
+% title('EEG')
+% subplot(5,1,2)
+% plot(tWindow:tWindow:tWindow*length(chj.widthR(:,2)),chj.widthR(:,2),...
+%     'Color',[33 113 181]./255)
+% hold on
+% plot(tWindow:tWindow:tWindow*length(smoothdata(chj.width(:,2),'movmedian',50)),...
+%     smoothdata(chj.widthR(:,2),'movmedian',50),'Color',[0 0 0]./255,...
+%     'LineWidth',2)
+% plot([szStart szStart],[min(chj.widthR(:,2)) max(chj.widthR(:,2))],'Color',...
+%     [202 0 32]./255, 'LineWidth',2)
+% plot([szStop szStop],[min(chj.widthR(:,2)) max(chj.widthR(:,2))],'Color',...
+%     [202 0 32]./255, 'LineWidth',2)
+% hold off
+% xlim([0 890])
+% ylim([min(chj.widthR(:,2)) max(chj.widthR(:,2))])
+% xlabel('Time (s)')
+% ylabel('\Delta\alpha')
+% title('Multifractal spectra width')
+% subplot(5,1,3)
+% plot(tWindow:tWindow:tWindow*length(chj.width(:,2)),chj.width(:,2),...
+%     'Color',[66 146 198]./255)
+% hold on
+% plot(tWindow:tWindow:tWindow*length(smoothdata(chj.width(:,2),'movmedian',50)),...
+%     smoothdata(chj.width(:,2),'movmedian',50),'Color',[0 0 0]./255,...
+%     'LineWidth',2)
+% plot([szStart szStart],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
+%     [202 0 32]./255, 'LineWidth',2)
+% plot([szStop szStop],[min(chj.width(:,2)) max(chj.width(:,2))],'Color',...
+%     [202 0 32]./255, 'LineWidth',2)
+% hold off
+% xlim([0 890])
+% ylim([min(chj.width(:,2)) max(chj.width(:,2))])
+% xlabel('Time (s)')
+% ylabel('\Delta\alpha')
+% title('Multifractal spectra width (normalised)')
+% subplot(5,1,4)
+% plot(tWindow:tWindow:tWindow*length(dStat(:,2)),dStat(:,2),...
+%     'Color',[107 174 214]./255)
+% hold on
+% plot(tWindow:tWindow:tWindow*length(smoothdata(dStat(:,2),'movmedian',50)),...
+%     smoothdata(dStat(:,2),'movmedian',50),'Color',[0 0 0]./255,...
+%     'LineWidth',2)
+% plot([szStart szStart],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
+%     [202 0 32]./255, 'LineWidth',2)
+% plot([szStop szStop],[min(dStat(:,2)) max(dStat(:,2))],'Color',...
+%     [202 0 32]./255, 'LineWidth',2)
+% hold off
+% xlim([0 890])
+% ylim([min(dStat(:,2)) max(dStat(:,2))])
+% xlabel('Time (s)')
+% ylabel('\sigma')
+% title('St. Deviation')
+% subplot(5,1,5)
+% plot(tWindow:tWindow:tWindow*length(ll),ll,'Color',[158 202 225]./255)
+% hold on
+% plot(tWindow:tWindow:tWindow*length(smoothdata(ll,'movmedian',50)),...
+%     smoothdata(ll,'movmedian',50),'Color',[0 0 0]./255,...
+%     'LineWidth',2)
+% plot([szStart szStart],[min(ll) max(ll)],'Color',[202 0 32]./255, ...
+%     'LineWidth',2)
+% plot([szStop szStop],[min(ll) max(ll)],'Color', [202 0 32]./255, ...
+%     'LineWidth',2)
+% hold off
+% xlim([0 890])
+% ylim([min(ll) max(ll)])
+% xlabel('Time (s)')
+% ylabel('LL')
+% title('Line Length')
 
 % %% Yuj's hacking exploration
 % dtime=2:2:2*length(chj.width(:,2));
