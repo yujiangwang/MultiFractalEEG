@@ -7,3 +7,6 @@
 [submodule "libs/plotScMatrix"]
 	path = libs/plotScMatrix
 	url = https://github.com/lucasfr/plotScMatrix
+[submodule "libs/MIToolbox"]
+	path = libs/MIToolbox
+	url = https://github.com/Craigacp/MIToolbox
