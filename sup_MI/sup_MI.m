@@ -78,10 +78,12 @@ for k = 1:size(bMat,2)
     
     for j = 1:size(bMat,2)
         
-        MI(k,j) = mi(bMat(:,k),bMat(:,j));
+        MI(k,j) = mutualinfo(bMat(:,k),bMat(:,j));
+        
         
     end
     
 end
 
 imagesc(MI)
+colorbar

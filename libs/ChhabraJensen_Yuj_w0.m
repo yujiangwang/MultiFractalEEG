@@ -1,4 +1,4 @@
-% Authors: Lucas FranÃ§a(1), Yujiang Wang(1,2,3), JosÃ© Garcia Vivas Miranda(4)
+% Authors: Lucas França(1), Yujiang Wang(1,2,3), José Garcia Vivas Miranda(4)
 
 % 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
 % University College London, London, United Kingdom
