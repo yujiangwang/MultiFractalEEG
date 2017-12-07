@@ -48,9 +48,5 @@ tic
 toc
 [HigFDn] = higuchi_nr_meth_n(data,segSize,4);
 
-%% SAVING OUTPUTS
-
-save('monofractal.mat','dfaFD','dfaFDn','mVal','stdVal','HigFD','HigFDn')
-
 
 %% PLOTTING THE FIGURES

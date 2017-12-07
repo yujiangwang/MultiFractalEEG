@@ -18,6 +18,7 @@
 clear
 close all
 addpath(genpath('../libs/'))
+addpath(genpath('../data/'))
 
 %% OPENING THE DATA
 
