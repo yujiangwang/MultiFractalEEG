@@ -52,9 +52,15 @@ figure
 imagesc(centers{:},values.')
 colorbar
 axis xy
+xlabel('\Delta\alpha*')
+ylabel('St. Dev.')
+set(gca,'FontSize',18,'FontName','Times')
 
 figure
 [values, centers] = hist3([chjAll.width(:,2) dStat(:,2)],[70 70]);
 imagesc(centers{:},values.')
 colorbar
 axis xy
+xlabel('\Delta\alpha')
+ylabel('St. Dev.')
+set(gca,'FontSize',18,'FontName','Times')
