@@ -13,7 +13,6 @@
 % email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
 % Website: https://lucasfr.github.io/, http://xaphire.de/
 
-%checked by YW 25th July 2017
 clear
 close all
 addpath(genpath('../libs/'))
@@ -43,26 +42,19 @@ sigma = 1./(1 + exp(-x));
 [chjAll.width,chjAll.deltaF] = ...
     chj_nr_meth_n(sigma,segmentSize,qi,qf,dq,Np,Ra,Io);
 
-%% STANDARD DEVIATION AND MEAN
+%% STANDARD DEVIATION AND MEN
 
 [~,~,dStat] = mstdvar(data,tWindow,sampRate);
 
-%pBandMat = powerBands(data,sampRate,tWindow);
-%% LINE LENGTH
+% values = hist3([data1(:) data2(:)],[51 51]);
+figure
+[values, centers] = hist3([chj.width(:,2) dStat(:,2)],[70 70]);
+imagesc(centers{:},values.')
+colorbar
+axis xy
 
-ll = llength(data,sampRate,tWindow);
-
-%% ENTROPY
-E = szEntropy(data,sampRate,tWindow);
-
-%% MONOFRACTAL MEASURE (DFA)
-
-[dfaFD] = dfa_nr_meth(data,segmentSize,Np,Io); % 2 - dyadic scale
-[dfaFDn] = dfa_nr_meth_n(data,segmentSize,Np,Io);
-
-%% MERGING AND EXPORTING THE MEASURES
-
-bMat = horzcat(chjAll.width(:,2),chjAll.deltaF(:,2),chj.width(:,2),...
-    chj.deltaF(:,2),dStat,ll,dfaFD,dfaFDn);
-
-save('bMat.mat','bMat')
+figure
+[values, centers] = hist3([chjAll.width(:,2) dStat(:,2)],[70 70]);
+imagesc(centers{:},values.')
+colorbar
+axis xy
