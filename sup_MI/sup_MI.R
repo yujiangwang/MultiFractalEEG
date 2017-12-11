@@ -43,7 +43,7 @@ ggplot(data = melted_mat, aes(varNames, variable, fill = value))+
                        mid = matPalette[paletteSize/2], 
                        midpoint = 0, limit = c(min(melted_mat$value),
                                                max(melted_mat$value)), space = "Lab", 
-                       name="Pearson\nCorrelation") +
+                       name="Mutual Information") +
   theme_minimal()+ 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, 
                                    size = 12, hjust = 1))+
@@ -57,11 +57,7 @@ ggplot(data = melted_mat, aes(varNames, variable, fill = value))+
     axis.text.y = element_text(size = 14),
     legend.justification = c(1, 0),
     legend.position = c(0.6, 0.7),
+    panel.background = element_blank(),
     legend.direction = "horizontal") +
   guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
                                title.position = "top", title.hjust = 0.5))
-
-# ggsave(ggheatmap, filename=paste("fancyCorM_",nm,".eps",sep=""), width = 10,
-#        height = 10, units = c("in"))
-# ggsave(ggheatmap, filename=paste("fancyCorM_",nm,".png",sep=""), width = 10,
-#        height = 10, units = c("in"), dpi = 300)
