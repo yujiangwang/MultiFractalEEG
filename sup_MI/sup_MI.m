@@ -81,3 +81,4 @@ end
 
 imagesc(MI)
 colorbar
+save('MI.mat','MI')
