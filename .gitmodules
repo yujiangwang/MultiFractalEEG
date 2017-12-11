@@ -7,3 +7,6 @@
 [submodule "libs/plotScMatrix"]
 	path = libs/plotScMatrix
 	url = https://github.com/lucasfr/plotScMatrix
+[submodule "libs/gcmi"]
+	path = libs/gcmi
+	url = https://github.com/robince/gcmi
