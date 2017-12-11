@@ -18,12 +18,6 @@ clear
 close all
 addpath(genpath('../libs/'))
 
-%% COMPILING SOURCES
-
-cd('../libs/MIToolbox/matlab/')
-CompileMIToolbox
-cd('../../../sup_MI')
-
 %% OPENING THE DATA
 
 load('JR_12062011_1630_1730_ch1.mat');
@@ -45,7 +39,7 @@ sampRate = 512;
 x = (data - mean(data))/std(data);
 sigma = 1./(1 + exp(-x));
 
-[chjAll.width,chjAll.deltaF] = ...
+[chjAll.deltaF,chjAll.width] = ...
     chj_nr_meth_n(sigma,segmentSize,qi,qf,dq,Np,Ra,Io);
 
 %% STANDARD DEVIATION AND MEN
@@ -57,18 +51,11 @@ sigma = 1./(1 + exp(-x));
 
 ll = llength(data,sampRate,tWindow);
 
-%% ENTROPY
-E = szEntropy(data,sampRate,tWindow);
-
-%% MONOFRACTAL MEASURE (DFA)
-
-[dfaFD] = dfa_nr_meth(data,segmentSize,Np,Io); % 2 - dyadic scale
-[dfaFDn] = dfa_nr_meth_n(data,segmentSize,Np,Io);
 
 %% MERGING AND EXPORTING THE MEASURES
 
 bMat = horzcat(chjAll.width(:,2),chjAll.deltaF(:,2),chj.width(:,2),...
-    chj.deltaF(:,2),dStat,ll,dfaFD,dfaFDn);
+    chj.deltaF(:,2),dStat,ll);
 
 save('bMat.mat','bMat')
 
@@ -78,8 +65,15 @@ for k = 1:size(bMat,2)
     
     for j = 1:size(bMat,2)
         
-        MI(k,j) = mutualinfo(bMat(:,k),bMat(:,j));
+        if k == j
+            
+            MI(k,j) = NaN;
+            
+        else
         
+            MI(k,j) = gcmi_cc(bMat(:,k),bMat(:,j));
+        
+        end
         
     end
     
