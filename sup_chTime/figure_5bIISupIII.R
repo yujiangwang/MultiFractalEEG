@@ -21,29 +21,19 @@ library(RColorBrewer)
 
 swSpotDataFrame <- dget("swSpotDataFrame.R")
 
-swSpot <- swSpotDataFrame("effSize_I001_P034_D01_ch_13.mat","13")
+swSpot <- swSpotDataFrame("effSize_Study 036_ch_7.mat","7")
 
-temp <-swSpotDataFrame("effSize_iI001_P034_D01_ch_13.mat","13")
+temp <-swSpotDataFrame("effSize_iIStudy 036_ch_7.mat","7")
 swSpot <- rbind(swSpot, temp)
-temp <-swSpotDataFrame("effSize_i2I001_P034_D01_ch_13.mat","13")
+temp <-swSpotDataFrame("effSize_i2Study 036_ch_7.mat","7")
 swSpot <- rbind(swSpot, temp)
 
-
-temp <- swSpotDataFrame(paste("effSize_I001_P034_D01_ch_14.mat",
-                              sep=""),"14")
-swSpot <- rbind(swSpot, temp)
-temp <-swSpotDataFrame(paste("effSize_iI001_P034_D01_ch_14.mat",
-                             sep=""),"14")
-swSpot <- rbind(swSpot, temp)
-temp <-swSpotDataFrame(paste("effSize_i2I001_P034_D01_ch_14.mat",
-                             sep=""),"14")
-swSpot <- rbind(swSpot, temp)
 
 
 ggplot(data = swSpot, aes(x = timeAnal, y = values, color = patName)) +
   geom_point(data = swSpot, aes(shape = as.factor(sampRate)), size = 3) +
   scale_shape_manual(values=1:nlevels(as.factor(swSpot$sampRate))) +
-  ylim(c(-0.5,1)) + xlim(c(0, 4.5)) + theme_bw(base_size = 20) +
+  ylim(c(-0.5,8)) + xlim(c(0, 4.5)) + theme_bw(base_size = 20) +
   theme(panel.border = element_rect(size = 2)) +
   theme(legend.background = element_rect(fill="white",
                                          size=1, linetype="solid",
@@ -55,4 +45,4 @@ ggplot(data = swSpot, aes(x = timeAnal, y = values, color = patName)) +
   theme(legend.title = element_text(size = 16),
         legend.text = element_text(size = 14))
 
-ggsave(filename = "effSize_I001_P034_D01.pdf", width = 9, height = 6.32, units = "in", useDingbats = F)
+ggsave(filename = "effSize_Study 036.pdf", width = 9, height = 6.32, units = "in", useDingbats = F)

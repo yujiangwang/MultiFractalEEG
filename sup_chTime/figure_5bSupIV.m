@@ -17,6 +17,7 @@
 clear
 close all
 addpath(genpath('../libs/'))
+addpath(genpath('../data/'))
 
 %% DEFINING PARAMETERS
 
@@ -77,7 +78,7 @@ for chNum = [1:4 43:45]
 
     sampRates = [5000, 2500, 1000, 500, 250];
 
-    % EVALUATION OF TEH TIME SCALES FOR THE ORIGINAL SIGNAL
+    % EVALUATION OF THE TIME SCALES FOR THE ORIGINAL SIGNAL
 
     filename = ['effSize_' id '_ch_' num2str(chNum)];
     swSpotEval(szRaw,nullRaw,filename,wSizes,szNum,...
@@ -91,7 +92,7 @@ for chNum = [1:4 43:45]
 
     sampRates = [3000,2000,1500,1200,750,600,300];
 
-    % EVALUATION OF TEH TIME SCALES FOR THE RESAMPLED SIGNAL
+    % EVALUATION OF THE TIME SCALES FOR THE RESAMPLED SIGNAL
 
     filename = ['effSize_i' id '_ch_' num2str(chNum)];
     swSpotEval(szRawi,nullRawi,filename,wSizes,szNum,...
@@ -105,7 +106,7 @@ for chNum = [1:4 43:45]
 
     sampRates = [4000,800,400];
 
-    % EVALUATION OF TEH TIME SCALES FOR THE RESAMPLED SIGNAL
+    % EVALUATION OF THE TIME SCALES FOR THE RESAMPLED SIGNAL
 
     filename = ['effSize_i2' id '_ch_' num2str(chNum)];
     swSpotEval(szRawi2,nullRawi2,filename,wSizes,szNum,...

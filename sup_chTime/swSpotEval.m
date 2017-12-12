@@ -1,4 +1,4 @@
-% Authors: Lucas FranÃ§a(1), Yujiang Wang(1,2,3)
+% Authors: Lucas França(1), Yujiang Wang(1,2,3)
 
 % 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
 % University College London, London, United Kingdom
@@ -15,6 +15,7 @@
 
 function swSpotEval(szRaw,nullRaw,filename,wSizes,szNum,...
     sampRate,sampRates,qi,qf,dq,Io,Np,Ra)
+
 % This function calculates for each input channel of each time series
 % segment with a seizure the effect size of the MF measure interictally vs
 % ictally. It saves the results in filename.

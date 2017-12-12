@@ -1,4 +1,4 @@
-% Authors: Lucas FranÃ§a(1), Yujiang Wang(1,2,3)
+% Authors: Lucas França(1), Yujiang Wang(1,2,3)
 
 % 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
 % University College London, London, United Kingdom
@@ -17,6 +17,7 @@
 clear
 close all
 addpath(genpath('../libs/'))
+addpath(genpath('../data/'))
 
 %% DEFINING PARAMETERS
 
@@ -77,7 +78,7 @@ for chNum = [7]
 
     sampRates = [5000, 2500, 1000, 500, 250];
 
-    % EVALUATION OF TEH TIME SCALES FOR THE ORIGINAL SIGNAL
+    % EVALUATION OF THE TIME SCALES FOR THE ORIGINAL SIGNAL
 
     filename = ['effSize_' id '_ch_' num2str(chNum)];
     swSpotEval(szRaw,nullRaw,filename,wSizes,szNum,...
@@ -105,7 +106,7 @@ for chNum = [7]
 
     sampRates = [4000,800,400];
 
-    % EVALUATION OF TEH TIME SCALES FOR THE RESAMPLED SIGNAL
+    % EVALUATION OF THE TIME SCALES FOR THE RESAMPLED SIGNAL
 
     filename = ['effSize_i2' id '_ch_' num2str(chNum)];
     swSpotEval(szRawi2,nullRawi2,filename,wSizes,szNum,...
