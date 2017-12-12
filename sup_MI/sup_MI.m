@@ -79,6 +79,4 @@ for k = 1:size(bMat,2)
     
 end
 
-imagesc(MI)
-colorbar
 save('MI.mat','MI')
