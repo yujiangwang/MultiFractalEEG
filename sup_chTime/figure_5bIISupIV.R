@@ -104,4 +104,4 @@ ggplot(data = swSpot, aes(x = timeAnal, y = values, color = patName)) +
   theme(legend.title = element_text(size = 16),
         legend.text = element_text(size = 14))
 
-ggsave(filename = "effSize_Study 040.pdf", width = 9, height = 6.32, units = "in", useDingbats = F)
+ggsave(filename = "effSize_Study 040.pdf", width = 10.27, height = 7.24, units = "in", useDingbats = F)
