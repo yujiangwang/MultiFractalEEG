@@ -1,7 +1,7 @@
 # MultiFractalEEG
 
 
-### Download
+## Download
 
 Please, clone the repository with the following command:
 
@@ -15,6 +15,19 @@ Please, install the packages ggplot2, R.matlab, reshape2, PerformanceAnalytics, 
 ```
 install.packages("ggplot2, R.matlab, reshape2, PerformanceAnalytics, RColorBrewer")
 ```
+
+## License
+
+This work is licensed under the [MIT License](https://github.com/lucasfr/chhabra-jensen/blob/master/LICENSE). However, pieces of code used in this were licensed with different terms. They are listed bellow with.
+
+Line colors - Matlab Copyright (c), [Jonathan C. Lansey](https://uk.mathworks.com/matlabcentral/fileexchange/42673-beautiful-and-distinguishable-line-colors-+-colormap)
+
+WFDB Toolbox - GNU General Public License v3.0, [Ikaro Silva](https://github.com/ikarosilva/wfdb-app-toolbox/blob/master/LICENSE)
+
+Higuchi and Katz fractal dimension measures - Copyright (c), [Jesús Monge](https://uk.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures)
+
+p-Model simulation - [Victor Venema](http://www2.meteo.uni-bonn.de/staff/venema/themes/surrogates/pmodel/)
+
 
 
 Figures of the artcle XXXXX
