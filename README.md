@@ -8,12 +8,26 @@ Please, clone the repository with the following command:
 ```
 git clone https://github.com/yujiangwang/MultiFractalEEG
 ```
+
 ## R packages
 
 Please, install the packages ggplot2, R.matlab, reshape2, PerformanceAnalytics, and RColorBrewer with the following command on your R console:
 
 ```
 install.packages("ggplot2, R.matlab, reshape2, PerformanceAnalytics, RColorBrewer")
+```
+
+## Matlab WFDB Toolbox
+
+Please, copy and paste the following lines on your Matlab command window:
+
+```
+wfdb_url='https://github.com/ikarosilva/wfdb-app-toolbox/raw/master/wfdb-app-toolbox-0-9-10.zip';  
+[filestr,status] = urlwrite(wfdb_url,'wfdb-app-toolbox-0-9-10.zip');  
+unzip('wfdb-app-toolbox-0-9-10.zip');  
+cd mcode  
+addpath(pwd);  
+savepath 
 ```
 
 ## License
@@ -26,7 +40,7 @@ WFDB Toolbox - GNU General Public License v3.0, [Ikaro Silva](https://github.com
 
 Higuchi and Katz fractal dimension measures - Copyright (c), [Jesús Monge](https://uk.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures)
 
-p-Model simulation - [Victor Venema](http://www2.meteo.uni-bonn.de/staff/venema/themes/surrogates/pmodel/)
+p-Model simulation - GNU public license, [Victor Venema](http://www2.meteo.uni-bonn.de/staff/venema/themes/surrogates/pmodel/)
 
 
 
@@ -48,13 +62,7 @@ link wfdb toolbox: https://github.com/ikarosilva/wfdb-app-toolbox
 link Higuchi script: https://uk.mathworks.com/matlabcentral/fileexchange/50290-higuchi-and-katz-fractal-dimension-measures  
 
 The DFA function used in this article can be installed on MATLAB with the following commands.    
-
-wfdb_url='https://github.com/ikarosilva/wfdb-app-toolbox/raw/master/wfdb-app-toolbox-0-9-10.zip';  
-[filestr,status] = urlwrite(wfdb_url,'wfdb-app-toolbox-0-9-10.zip');  
-unzip('wfdb-app-toolbox-0-9-10.zip');  
-cd mcode  
-addpath(pwd);  
-savepath  
+ 
 
 FIGURE 4 - .../mfractal_methods/
 
