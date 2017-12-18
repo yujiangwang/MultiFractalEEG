@@ -2,7 +2,6 @@ rm(list = ls())
 library(ggplot2)
 library(R.matlab)
 library(reshape2)
-library(extrafont)
 
 Q <- readMat("quantiles.mat")
 Q <- data.frame(Q$quantMat)
@@ -23,12 +22,11 @@ errM <- melt(errM, id = "v")
 
 R <- cbind(val, data.frame(errM$value),data.frame(errP$value))
 
-ggplot(data = R, aes(x = v, y = value, color = as.factor(variable))) + 
-  geom_line(size = 2) + geom_ribbon(aes(ymin=errM.value, ymax=errP.value, 
+ggplot(data = R, aes(x = v, y = value, color = as.factor(variable))) +
+  geom_line(size = 2) + geom_ribbon(aes(ymin=errM.value, ymax=errP.value,
                                 fill = as.factor(variable)), alpha=0.4) +
   scale_color_manual(values = c("#ca0020", "#0571b0", "#92c5de")) +
   scale_fill_manual(values = c("#ca0020", "#0571b0", "#92c5de")) +
   theme_bw(base_size = 20) +
-  theme(text=element_text(family="Times New Roman")) +
-  theme(panel.border = element_rect(size = 2)) + 
+  theme(panel.border = element_rect(size = 2)) +
   theme(legend.position="none") + ylab(expression(paste(Delta, alpha)))

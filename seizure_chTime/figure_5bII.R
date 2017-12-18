@@ -17,7 +17,6 @@ rm(list = ls())
 
 library(ggplot2)
 library(RColorBrewer)
-library(extrafont)
 
 # IF THIS IS THE FIRST TIME YOU USE THE PACKAGE extrafont, PLEASE RUN
 # THE FOLLOWING COMMANDS
@@ -65,7 +64,6 @@ ggplot(data = swSpot, aes(x = timeAnal, y = values, color = patName)) +
   geom_point(data = swSpot, aes(shape = as.factor(sampRate)), size = 3) +
   scale_shape_manual(values=1:nlevels(as.factor(swSpot$sampRate))) +
   ylim(c(-0.5,2.5)) + xlim(c(0, 4.5)) + theme_bw(base_size = 20) +
-  theme(text=element_text(family="Times New Roman")) +
   theme(panel.border = element_rect(size = 2)) +
   theme(legend.background = element_rect(fill="white",
                                          size=1, linetype="solid",

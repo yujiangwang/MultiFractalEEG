@@ -16,7 +16,6 @@ Website: https://lucasfr.github.io/, http://xaphire.de/
 rm(list = ls())
 
 library(R.matlab)
-library(extrafont)
 
 my_data <- readMat("iEEG_pBands.mat")
 
