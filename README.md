@@ -1,5 +1,22 @@
 # MultiFractalEEG
 
+
+### Download
+
+Please, clone the repository with the following command:
+
+```
+git clone https://github.com/yujiangwang/MultiFractalEEG
+```
+## R packages
+
+Please, install the packages ggplot2, R.matlab, reshape2, PerformanceAnalytics, and RColorBrewer with the following command on your R console:
+
+```
+install.packages("ggplot2, R.matlab, reshape2, PerformanceAnalytics, RColorBrewer")
+```
+
+
 Figures of the artcle XXXXX
 
 FIGURE 1 - .../sigmoid/  
