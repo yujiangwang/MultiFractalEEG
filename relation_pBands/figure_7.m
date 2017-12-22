@@ -17,11 +17,12 @@
 clear
 close all
 
+addpath(genpath('../libs/'))
 addpath(genpath('../data/'))
 
 %% EVALUATION PARAMETERS
 
-qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='I001_P005_D01';
+qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0.9; id='JR_12062011_1630_1730_ch1';
 sampRate = 5000;
 
 %% iEEG.ORG SESSION (PLEASE REPLACE xxx WITH YOUR DETAILS)
@@ -45,14 +46,14 @@ sampRate = 5000;
 
 %% LOADING DATA (YOU CAN ALSO DOWNLOAD IT FROM iEEG.ORG - JUST UNCOMMENT)
 
-load('figure_7.mat')
+load('JR_12062011_1630_1730_ch1.mat')
 
 %% BANDPASS FILTER
 %to remove DC shifts below 0.5 Hz
 %not notch filter applied, as line noise was not too bad in this segment
 
-[b,a] = butter(2, [0.5 500]/(sampRate/2), 'bandpass');
-values = filtfilt(b,a,values);
+[b,a] = butter(2, [0.5 512]/(sampRate/2), 'bandpass');
+values = filtfilt(b,a,double(data));
 
 %% CROPPING THE DATA INTO A LENGTH COMPATIBLE TO THE DYADIC SCALE
 
@@ -63,16 +64,11 @@ data = data';
 %% CHHABRA-JENSEN METHOD
 
 [deltaF,width] = ...
-    chj_nr_meth(data,8192,qi,qf,dq,Np,Ra,Io);
-
-%% BANDPASS FILTER TO REMOVE DC shifts
-
-[b,a] = butter(2, [0.5 500]/(sampRate/2), 'bandpass');
-values = filtfilt(b,a,values);
+    chj_nr_meth(data',8192,qi,qf,dq,Np,Ra,Io);
 
 %% POWER SPECTRUM FUNCTION
 
-[pBandMat] = powerBands(data,5000,8192);
+[pBandMat] = powerBands(data,512,8192);
 
 %% CREATING DATA MATRIX
 
