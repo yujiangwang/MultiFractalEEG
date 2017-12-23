@@ -26,4 +26,7 @@ colnames(a) <- c("Width*","Height*",expression(delta),expression(theta),
 
 plotScMatrix <- dget("plotScMatrix.R")
 
+
+pdf("bMat_pBands.pdf",width=7.35,height=5.79,paper='special') 
 plotScMatrix(a, histogram=TRUE)
+dev.off()
