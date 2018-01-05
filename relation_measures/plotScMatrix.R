@@ -1,17 +1,17 @@
 # Authors: Lucas França(1), Yujiang Wang(1,2,3)
 
 # 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
-University College London, London, United Kingdom
+# University College London, London, United Kingdom
 
 # 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
 # School of Computing Science, Newcastle University, Newcastle upon Tyne,
 # United Kingdom
 
 # 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
-United Kingdom
+# United Kingdom
 
 # email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
-Website: https://lucasfr.github.io/, http://xaphire.de/
+# Website: https://lucasfr.github.io/, http://xaphire.de/
 
 #' @param R data for the x axis, can take matrix,vector, or timeseries
 #' @param histogram TRUE/FALSE whether or not to display a histogram
@@ -31,7 +31,7 @@ Website: https://lucasfr.github.io/, http://xaphire.de/
 #' \url{http://addictedtor.free.fr/graphiques/sources/source_137.R}
 #' # Original version from R Development Core Team
 #' modified by Peter Carl
-#' @author Lucas Fran�a
+#' @author Lucas França
 #' @seealso \code{\link{table.Correlation}}
 ###keywords ts multivariate distribution models hplot
 #' @examples
@@ -45,7 +45,7 @@ plotScMatrix <-
   function (x, method=c("pearson", "kendall", "spearman"),
             colourHist, colourSigns, colourCor, colourSc, ...)
   {
-    # @author Lucas Fran�a
+    # @author Lucas França
     # Original version from R Development Core Team
     # modified by Peter Carl
     # Visualization of a Correlation Matrix.
@@ -69,7 +69,7 @@ plotScMatrix <-
                           method, cex.cor, ...)
     {
       usr <- par("usr"); on.exit(par(usr))
-      par(usr = c(0, 1, 0, 1), par(family = "Times New Roman"))
+      par(usr = c(0, 1, 0, 1))
       r <- cor(x, y, use=use, method=method) # MG: remove abs here
       txt <- format(c(r, 0.123456789), digits=digits)[1]
       txt <- paste(prefix, txt, sep="")
@@ -97,8 +97,7 @@ plotScMatrix <-
       dnorm(t, mean=mean(x), sd=sd.xts(x) )
     }
     hist.panel = function (x, ...) {
-      par(new = TRUE, par(family = "Times New Roman", lwd = 2,
-                          cex.axis = 1.5))
+      par(new = TRUE)
       hist(x,
            col = colourHist,
            border = colourHist,
@@ -117,7 +116,7 @@ plotScMatrix <-
 
 
 ###############################################################################
-#  Lucas Fran�a
+#  Lucas França
 # This is a modified version from an function originally written by:
 # R (http://r-project.org/) Econometrics for Performance and Risk Analysis
 #
