@@ -138,8 +138,8 @@ subplot(2,1,2)
 plot(2:2:2*length(dfaFDn(:,4)),dfaFDn(:,4),'Color',[5 113 176]./255,...
     'LineWidth',1)
 hold on
-plot(2:2:2*length(smoothdata(dfaFD(:,4),'movmedian',50)),...
-    smoothdata(dfaFD(:,4),'movmedian',50),'Color',[0 0 0]./255,'LineWidth',2)
+plot(2:2:2*length(smoothdata(dfaFDn(:,4),'movmedian',50)),...
+    smoothdata(dfaFDn(:,4),'movmedian',50),'Color',[0 0 0]./255,'LineWidth',2)
 hold off
 title('Variation of scaling exponent')
 xlim([2 3600])
