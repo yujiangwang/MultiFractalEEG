@@ -64,11 +64,11 @@ data = data';
 %% CHHABRA-JENSEN METHOD
 
 [deltaF,width] = ...
-    chj_nr_meth(data',8192,qi,qf,dq,Np,Ra,Io);
+    chj_nr_meth(data',1024,qi,qf,dq,Np,Ra,Io);
 
 %% POWER SPECTRUM FUNCTION
 
-[pBandMat] = powerBands(data,512,8192);
+[pBandMat] = powerBands(data,512,1024);
 
 %% CREATING DATA MATRIX
 
