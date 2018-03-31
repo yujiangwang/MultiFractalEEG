@@ -24,8 +24,8 @@ segmentSize = 1024; qi=-15; qf=15; dq=1; Io=2; Np=8; Ra=0;
 
 %% GENERATING A MULTIFRACTAL PROFILE WITH p-MODEL
 
-% THE GENERATED DATA HAS 64 EPOCHS WITH THE segmentSize AND p = 0.375
-data = horzcat(pmodel(segmentSize*64, 0.375));
+% THE GENERATED DATA HAS 64 EPOCHS WITH THE segmentSize AND p = 0.4
+data = pmodel(segmentSize*64, 0.4);
 
 %% ESTIMATING THE MULTIFRACTAL SPECTRA
 
@@ -38,19 +38,21 @@ data = horzcat(pmodel(segmentSize*64, 0.375));
 [chj.deltaF,chj.width] = ...
     chj_nr_meth(data,segmentSize,qi,qf,dq,Np,Ra,Io);
 
-% WITHOUT SIGMOID TRANSFORMATION
+%% VARIANCES
 
-[mfdfaN.deltaF,mfdfaN.width] = ...
-    mfdfa_nr_meth_n(data,segmentSize,qi,qf,dq,Np,Ra,Io);
-[mfdmaN.deltaF,mfdmaN.width] = ...
-    mfdma_nr_meth_n(data,segmentSize,qi,qf,dq,Np,Ra,Io);
-[chjN.deltaF,chjN.width] = ...
-    chj_nr_meth_n(data,segmentSize,qi,qf,dq,Np,Ra,Io);
+deltaFChJVar = var(chj.deltaF(:,2))
+widthChJVar = var(chj.width(:,2))
 
+deltaFMFDFAVar = var(mfdfa.deltaF(:,2))
+widthMFDFAVar = var(mfdfa.width(:,2))
+
+deltaFMFDMAVar = var(mfdma.deltaF(:,2))
+widthMFDMAVar = var(mfdma.width(:,2))
 
 %% FIGURE OF THE VARIATION OF THE MULTIFRACTAL SPECTRA WIDTH (W/ SIGMOID)
 
 h = figure;
+set(0,'DefaultTextInterpreter', 'latex')
 hold on
 
 plot(2:2:2*length(mfdfa.width(:,2)),mfdfa.width(:,2),...
@@ -62,10 +64,10 @@ plot(2:2:2*length(chj.width(:,2)),chj.width(:,2),...
 
 hold off
 
-lgd = legend('MF-DFA*','MF-DMA*','Chhabra-Jensen*','location','best');
+lgd = legend('MF-DFA','MF-DMA','Chhabra-Jensen','location','best');
 lgd.FontSize = 14;
 xlabel('Time (s)')
-ylabel('\Delta\alpha')
+ylabel('$\Delta\alpha^{\dagger}$')
 box on
 xlim([2 2*length(mfdfa.width(:,2))])
 ylim([0.1 1.1])
@@ -78,41 +80,10 @@ print -depsc2 -painters meth_pModel_comp_sig_width_unfilt.eps
 print -dpng meth_pModel_comp_sig_width_unfilt.png
 
 
-
-
-
-%% FIGURE OF THE VARIATION OF THE MULTIFRACTAL SPECTRA WIDTH
-
-h = figure;
-hold on
-
-plot(2:2:2*length(mfdfaN.width(:,2)),mfdfaN.width(:,2),':',...
-    'Color',[202 0 32]./255,'LineWidth',3)
-plot(2:2:2*length(mfdmaN.width(:,2)),mfdmaN.width(:,2),':',...
-    'Color',[146 197 222]./255,'LineWidth',3)
-plot(2:2:2*length(chjN.width(:,2)),chjN.width(:,2),':',...
-    'Color',[5 113 176]./255,'LineWidth',3)
-
-hold off
-
-lgd = legend('MF-DFA','MF-DMA','Chhabra-Jensen','location','best');
-lgd.FontSize = 14;
-xlabel('Time (s)')
-ylabel('\Delta\alpha')
-box on
-xlim([2 2*length(mfdfa.width(:,2))])
-ylim([0.1 1.1])
-set(gca,'FontSize',20,'FontName','Times')
-set(gca,'LineWidth',1.5)
-ttl = title('Multifractal spectra width | p-Model');
-ttl.FontSize = 16;
-
-print -depsc2 -painters meth_pModel_comp_width_unfilt.eps
-print -dpng meth_pModel_comp_width_unfilt.png
-
 %% FIGURE OF THE VARIATION OF THE MULTIFRACTAL SPECTRA HEIGHT (W/ SIGMOID)
 
 h = figure;
+set(0,'DefaultTextInterpreter', 'latex')
 hold on
 
 plot(2:2:2*length(mfdfa.deltaF(:,2)),mfdfa.deltaF(:,2),...
@@ -124,10 +95,10 @@ plot(2:2:2*length(chj.deltaF(:,2)),chj.deltaF(:,2),...
 
 hold off
 
-lgd = legend('MF-DFA*','MF-DMA*','Chhabra-Jensen*','location','best');
+lgd = legend('MF-DFA','MF-DMA','Chhabra-Jensen','location','best');
 lgd.FontSize = 14;
 xlabel('Time (s)')
-ylabel('\Deltaf')
+ylabel('$\Delta f^{\dagger}$')
 box on
 xlim([2 2*length(mfdfa.deltaF(:,2))])
 ylim([0.1 3.4])
@@ -141,32 +112,18 @@ print -depsc2 -painters meth_pModel_comp_sig_deltaF_unfilt.eps
 print -dpng meth_pModel_comp_sig_deltaF_unfilt.png
 
 
-%% FIGURE OF THE VARIATION OF THE MULTIFRACTAL SPECTRA HEIGHT
+%% FIGURE OF THE VARIATION OF p-MODEL PROFILE IN TIME
 
 h = figure;
-hold on
+set(0,'DefaultTextInterpreter', 'latex')
 
-plot(2:2:2*length(mfdfaN.deltaF(:,2)),mfdfaN.deltaF(:,2),':',...
-    'Color',[202 0 32]./255,'LineWidth',3)
-plot(2:2:2*length(mfdmaN.deltaF(:,2)),mfdmaN.deltaF(:,2),':',...
-    'Color',[146 197 222]./255,'LineWidth',3)
-plot(2:2:2*length(chjN.deltaF(:,2)),chjN.deltaF(:,2),':',...
-    'Color',[5 113 176]./255,'LineWidth',3)
+plot(2:2:2*length(data),data, 'Color',[0 0 0]./255,'LineWidth',1)
 
-hold off
-
-lgd = legend('MF-DFA','MF-DMA','Chhabra-Jensen','location','best');
-lgd.FontSize = 14;
-xlabel('Time (s)')
-ylabel('\Deltaf')
+xlabel('Time')
+ylabel('Value')
 box on
-xlim([2 2*length(mfdfa.deltaF(:,2))])
-ylim([0.1 3.4])
+xlim([2 2*length(data)])
 set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
-ttl = title('Multifractal spectra height | p-Model');
+ttl = title('Generated profile | p-Model');
 ttl.FontSize = 16;
-
-
-print -depsc2 -painters meth_pModel_comp_deltaF_unfilt.eps
-print -dpng meth_pModel_comp_deltaF_unfilt.png
