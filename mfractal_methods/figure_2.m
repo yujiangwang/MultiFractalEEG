@@ -117,12 +117,13 @@ print -dpng meth_pModel_comp_sig_deltaF_unfilt.png
 h = figure;
 set(0,'DefaultTextInterpreter', 'latex')
 
-plot(2:2:2*length(data),data, 'Color',[0 0 0]./255,'LineWidth',1)
+plot(2/segmentSize:2/segmentSize:2*length(data)/segmentSize,data,...
+    'Color',[0 0 0]./255,'LineWidth',1)
 
 xlabel('Time')
 ylabel('Value')
 box on
-xlim([2 2*length(data)])
+xlim([2/segmentSize 2*length(data)/segmentSize])
 set(gca,'FontSize',20,'FontName','Times')
 set(gca,'LineWidth',1.5)
 ttl = title('Generated profile | p-Model');
