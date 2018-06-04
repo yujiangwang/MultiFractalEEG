@@ -78,7 +78,7 @@ ylim([0.2 0.7])
 xlabel('Time (s)')
 ylabel('$\Delta\alpha^{\dagger}$')
 set(gca,'FontSize',24, 'FontName', 'Times')
-title('Multifractal spectra width (normalised)')
+title('Multifractal spectra width (with standardisation and sigmoid)')
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
