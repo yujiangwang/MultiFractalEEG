@@ -50,7 +50,7 @@ FIGURE 2 - .../fractal_methods/
 :warning: Please, bear in mind that both Higuchi and DFA algorithms are not optimised and could take a while to run, depending on the performance of your machine.
 
 FIGURE 3 - .../mfractal_methods/  
-FIGURE 4 - .../szTrace/ 
+FIGURE 4 - .../szTrace/   
 FIGURE 5 - .../relation_measures/  
 FIGURE 6 - .../relation_pBands/  
 FIGURE 7 - .../seizure_chTime/  
