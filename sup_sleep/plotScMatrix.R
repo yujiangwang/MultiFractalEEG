@@ -1,17 +1,17 @@
 # Authors: Lucas França(1), Yujiang Wang(1,2,3)
-
+# 
 # 1 Department of Clinical and Experimental Epilepsy, UCL Institute of Neurology,
-University College London, London, United Kingdom
-
+# University College London, London, United Kingdom
+# 
 # 2 Interdisciplinary Computing and Complex BioSystems (ICOS) research group,
 # School of Computing Science, Newcastle University, Newcastle upon Tyne,
 # United Kingdom
-
+# 
 # 3 Institute of Neuroscience, Newcastle University, Newcastle upon Tyne,
-United Kingdom
-
+# United Kingdom
+# 
 # email address: lucas.franca.14@ucl.ac.uk, Yujiang.Wang@newcastle.ac.uk
-Website: https://lucasfr.github.io/, http://xaphire.de/
+# Website: https://lucasfr.github.io/, http://xaphire.de/
 
 #' @param R data for the x axis, can take matrix,vector, or timeseries
 #' @param histogram TRUE/FALSE whether or not to display a histogram
@@ -82,7 +82,7 @@ plotScMatrix <-
                        cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
                        symbols = c("***", "**", "*", ".", " "))
 
-      # MG: add abs here and also include a 30% buffer for small numbers
+      # MG: add abs here and also include a 30# buffer for small numbers
 
       # CORRELATION COEFFICIENTS
 
