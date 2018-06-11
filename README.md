@@ -14,7 +14,7 @@ git clone https://github.com/yujiangwang/MultiFractalEEG
 Please, install the packages [ggplot2](https://github.com/tidyverse/ggplot2), [R.matlab](https://github.com/HenrikBengtsson/R.matlab), [reshape2](https://github.com/hadley/reshape), and [RColorBrewer](https://github.com/cran/RColorBrewer) with the following command on your R console:
 
 ```
-install.packages("ggplot2, R.matlab, reshape2, RColorBrewer")
+install.packages("ggplot2", "R.matlab", "reshape2", "RColorBrewer")
 ```
 
 ## Matlab WFDB Toolbox
@@ -40,18 +40,17 @@ Higuchi and Katz fractal dimension measures - Copyright (c), [Jesús Monge](http
 p-Model simulation - GNU public license, [Victor Venema](http://www2.meteo.uni-bonn.de/staff/venema/themes/surrogates/pmodel/)<br />
 Multifractal Detrended Fluctuation Analysis - Copyright (c), [Espen A. F. Ihlen](https://www.ntnu.edu/inb/geri/software)<br />
 Multifractal Detrended Moving Average - Copyright (c), [Gao-Feng Gu and Wei-Xing Zhou](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.82.011136)<br />
+gcmi : Gaussian-Copula Mutual Information - GNU General Public License v3.0, [Robin Ince](https://github.com/robince/gcmi)<br />
 
 
-## Figures of the artcle XXXXX
+## Figures of the article XXXXX
+  
+FIGURE 2 - .../fractal_methods/  
 
-FIGURE 1 - .../sigmoid/  
-FIGURE 2 - .../mapping_par/  
-FIGURE 3 - .../fractal_methods/  
+:warning: Please, bear in mind that both Higuchi and DFA algorithms are not optimised and could take a while to run, depending on the performance of your machine.
 
-:warning: Please, bear in mind that both Higuchi and DFA algorithms are not optimised and could take a while to run depending on the performance of your machine.
-
-FIGURE 4 - .../mfractal_methods/
-FIGURE 5 - .../seizures_chTime/  
-FIGURE 6 - .../relation_measures/  
-FIGURE 7 - .../relation_pBands/  
-FIGURE 8 - .../sleep/  
+FIGURE 3 - .../mfractal_methods/  
+FIGURE 4 - .../szTrace/ 
+FIGURE 5 - .../relation_measures/  
+FIGURE 6 - .../relation_pBands/  
+FIGURE 7 - .../seizure_chTime/  
