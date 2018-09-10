@@ -60,43 +60,59 @@ x = (electr - mean(electr))/std(electr);
 sigma = 1./(1 + exp(-x));
 
 colours = [[108,55,153];
-[93,185,203];
-[130,0,191];
-[0,115,119];
-[255,28,158];
-[80,181,239];
-[214,1,146];
-[117,180,210];
-[116,69,242];
-[71,82,99];
-[2,66,233];
-[187,137,152];
-[69,108,255];
-[209,131,155];
-[0,131,255];
-[169,0,106];
-[1,144,234];
-[255,104,222];
-[1,112,167];
-[250,135,189];
-[8,73,181];
-[178,82,116];
-[211,122,255];
-[159,172,198];
-[143,23,134];
-[64,80,119];
-[246,134,211];
-[73,73,143];
-[226,141,233];
-[126,56,99];
-[198,159,206]]/255;
+    [93,185,203];
+    [130,0,191];
+    [0,115,119];
+    [255,28,158];
+    [80,181,239];
+    [214,1,146];
+    [117,180,210];
+    [116,69,242];
+    [71,82,99];
+    [2,66,233];
+    [187,137,152];
+    [69,108,255];
+    [209,131,155];
+    [0,131,255];
+    [169,0,106];
+    [1,144,234];
+    [255,104,222];
+    [1,112,167];
+    [250,135,189];
+    [8,73,181];
+    [178,82,116];
+    [211,122,255];
+    [159,172,198];
+    [143,23,134];
+    [64,80,119];
+    [246,134,211];
+    [73,73,143];
+    [226,141,233];
+    [126,56,99];
+    [198,159,206]]/255;
 
 scales = 2.^(Io:Np);
 
 % CHHABRA-JENSEN METHOD CALL
 [n,Fq,tau,alpha,f] = MFDMA_1D(sigma,2^Io,2^Np,7,0,qi:dq:qf);
 
-figure
+
+h = figure('Visible','off');
+set(0,'DefaultTextInterpreter', 'latex')
+
+plot((1:1:length(electr))/1024,electr,'LineWidth', 1)
+
+set(gca,'FontSize',20,'FontName','Times')
+xlabel('log(Scale)')
+ylabel('Value')
+xlabel('Time (s)')
+box on
+
+print -depsc2 -painters series.eps
+print -dpng series.png
+
+h = figure('Visible','off');
+set(0,'DefaultTextInterpreter', 'latex')
 hold on
 
 for p = 1:(length(qi:dq:qf))
@@ -104,12 +120,24 @@ for p = 1:(length(qi:dq:qf))
     plot(log(scales),log(Fq(:,p)),'Color',colours(p,:),'LineWidth', 1)
     
 end
+
+hold off
+
+set(gca,'FontSize',20,'FontName','Times')
+xlabel('log(Scale)')
+ylabel('$\log{F_q}$')
+box on
+
+print -depsc2 -painters mfdmaF.eps
+print -dpng mfdmaF.png
 
 [Hq,tq,hq,Dq,Fq] = MFDFA1(sigma,Io:Np,qi:dq:qf,1,0);
 
 Fq = Fq';
 
-figure
+
+h = figure('Visible','off');
+set(0,'DefaultTextInterpreter', 'latex')
 hold on
 
 for p = 1:(length(qi:dq:qf))
@@ -117,3 +145,11 @@ for p = 1:(length(qi:dq:qf))
     plot(log(scales),log(Fq(:,p)),'Color',colours(p,:),'LineWidth', 1)
     
 end
+
+set(gca,'FontSize',20,'FontName','Times')
+xlabel('log(Scale)')
+ylabel('$\log{F_q}$')
+box on
+
+print -depsc2 -painters mfdfaF.eps
+print -dpng mfdfaF.png
