@@ -68,7 +68,7 @@ Multifractal Detrended Moving Average - Copyright (c), [Gao-Feng Gu and Wei-Xing
 gcmi : Gaussian-Copula Mutual Information - GNU General Public License v3.0, [Robin Ince](https://github.com/robince/gcmi)<br />
 
 
-## Figures of the article XXXXX
+## Figures of the article
   
 FIGURE 2 - .../fractal_methods/  
 
