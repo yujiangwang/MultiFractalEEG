@@ -4,6 +4,10 @@
 
 França, L.G.S., Miranda, J.G.V., Leite, M., Sharma, N.K., Walker, M.C., Lemieux, L. and Wang, Y., 2018. [Fractal and Multifractal Properties of Electrographic Recordings of Human Brain Activity: Towards its Use as a Signal Feature for Machine Learning in Clinical Applications](https://www.frontiersin.org/articles/10.3389/fphys.2018.01767/). Frontiers in Physiology, 9, p.1767. DOI: 10.3389/fphys.2018.01767
 
+:warning: See also:
+
+:newspaper: FRANÇA, L. G. S.; MONTOYA, P.; Miranda, J. G. V. [On multifractals: a non-linear study of actigraphy data](https://doi.org/10.1016/J.PHYSA.2018.09.122). 2019, 514, 612–619.  arXiv preprint arXiv:1702.03912. GitHub Repository: [lucasfr/actiMF](https://github.com/lucasfr/actiMF)
+
 ## Download
 
 Please, clone the repository with the following command:
