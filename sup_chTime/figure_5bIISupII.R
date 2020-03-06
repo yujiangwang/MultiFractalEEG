@@ -74,7 +74,7 @@ ggplot(data = swSpot, aes(x = timeAnal, y = values, color = patName)) +
                                          colour ="black")) +
   geom_smooth(se=FALSE, size = 2) +
   scale_color_manual(values = c("#ca0020", "#92c5de", "#0571b0")) +
-  xlab('Time (s)') + ylab('Effect Size') +
+  xlab('Epoch Duration (s)') + ylab('Cohen\'s D Effect Size') +
   labs(color = "Channel") + labs(shape = "Sampling Rate (Hz)") +
   theme(legend.title = element_text(size = 16),
         legend.text = element_text(size = 14))

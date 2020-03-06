@@ -100,3 +100,36 @@ ggplot(data = swSpot, aes(x = timeAnal, y = values, color = patName)) +
         legend.text = element_text(size = 14))
 
 ggsave(filename = "effSize.pdf", width = 8.86, height = 6.26, units = "in", useDingbats = F)
+
+ggplot(data = swSpot, aes(x = as.factor(sampRate), y = values)) +
+  geom_violin(trim = FALSE) + 
+  geom_jitter(aes(colour = log(timeAnal), 
+                  shape = patName, 
+                  size = I(1.5))) + 
+  scale_colour_viridis_c() + 
+  geom_boxplot(width = 0.05, 
+               outlier.shape = NA) + 
+  theme_bw(base_size = 20) + 
+  theme(panel.border = element_rect(size = 2)) +
+  ylim(c(-0.5,2.5)) + 
+  xlab("Sampling Frequency (Hz)") + 
+  ylab("Cohen's D Effect Size")
+
+  geom_point(data = swSpot, aes(shape = as.factor(sampRate)), size = 3) +
+  scale_shape_manual(values=1:nlevels(as.factor(swSpot$sampRate))) +
+  
+  #xlim(c(0, 4.5)) + 
+  theme_bw(base_size = 20) +
+  theme(panel.border = element_rect(size = 2)) +
+  theme(legend.background = element_rect(fill="white",
+                                         size=1, linetype="solid",
+                                         colour ="black")) 
+  geom_smooth(se=FALSE, size = 2) +
+  scale_color_manual(values = c("#ca0020", "#92c5de", "#0571b0")) +
+  xlab('Time (s)') + ylab('Effect Size') +
+  labs(color = "Channel") + labs(shape = "Sampling Rate (Hz)") +
+  theme(legend.title = element_text(size = 16),
+        legend.text = element_text(size = 14))
+  
+  anovaModel <- aov(values ~ sampRate, swSpot)
+  summary(anovaModel)
